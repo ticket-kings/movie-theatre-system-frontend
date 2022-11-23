@@ -1,0 +1,19 @@
+.header > button {
+    margin: 0.5rem;
+    border: 1px solid rgb(163, 163, 173);
+    color: black;
+    background: beige;
+}
+
+.logo {
+    width: 3rem;
+    height: 3em;
+    padding: 0.5em;
+    will-change: filter;
+  }
+  .logo:hover {
+    filter: drop-shadow(0 0 2em #646cffaa);
+  }
+  .logo.react:hover {
+    filter: drop-shadow(0 0 2em #61dafbaa);
+  }
