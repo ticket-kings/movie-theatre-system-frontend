@@ -9,11 +9,11 @@ const Registrationpage = () => {
       <div>
         <h1>Register</h1>
         <div className="card">
-          <p>Register</p>
+          <p>Please input the below information to register:</p>
           <input type="email" placeholder='email'/>
           <input type="password" placeholder='password' />
           <input type="password" placeholder='verify password' />
-          <button>Login</button>
+          <button>Register</button>
         </div>
       </div>
     </div>

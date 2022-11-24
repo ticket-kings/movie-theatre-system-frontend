@@ -9,7 +9,7 @@ const Loginpage = () => {
       <div>
         <h1>Login</h1>
         <div className="card">
-          <p>Login</p>
+          <p>Please login if you are a registered user</p>
           <input type="email" placeholder='email'/>
           <input type="password" placeholder='password' />
           <button>Login</button>

@@ -1,3 +1,14 @@
 .home {
     background-color: whitesmoke;
 }
+
+.home > button {
+    margin: 0.5rem;
+    border: 1px solid rgb(163, 163, 173);
+    color: black;
+    background: beige;
+}
+
+.corner {
+    text-align: left;
+}
