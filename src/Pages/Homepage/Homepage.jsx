@@ -10,11 +10,10 @@ const Homepage = () => {
 
   return (
     <div className="home">
-      <p className = "corner"> Welcome Guest User! </p>
       <Header />
-      <div className ="home">
+      <div className ="home_container">
         <h1>Ticket Kings Movie Theatre</h1>
-          <p> Book a movie now! </p>
+          <h2> Book a movie now! </h2>
           <input type="searchMovie" placeholder='Movie' />
           <button>Search for Movie</button>
           <button onClick={() => navigate("/movie")}>View all Movies</button>

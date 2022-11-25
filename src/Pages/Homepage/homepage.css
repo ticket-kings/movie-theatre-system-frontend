@@ -1,19 +1,27 @@
 .home {
-    background-color: whitesmoke;
+  text-align: center;
+  color: white;
+  background-color: rgb(20, 15, 66);
 }
 
 .home > button {
-    margin: 0.5rem;
-    border: 1px solid rgb(163, 163, 173);
-    color: black;
-    background: beige;
-}
-
-.corner {
-    text-align: left;
+  margin: 0.5rem;
+  border: 1px solid rgb(163, 163, 173);
+  color: black;
+  background: rgb(231, 231, 224);
+  padding: 0.5rem;
 }
 
 .home > input {
-    margin: 0.5rem;
-    border: 1px solid rgb(163, 163, 173);
+  margin: 0.5rem;
+  border: 1px solid rgb(214, 214, 226);
+  border-radius: 3px;
+  padding: 0.5rem;
+}
+
+.home_container {
+    background-color: black;
+    padding: 1rem;
+    color: white;
+    margin: 0 8rem 0 8rem;
 }

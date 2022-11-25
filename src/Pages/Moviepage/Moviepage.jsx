@@ -1,12 +1,13 @@
-import React from 'react'
+import React from "react";
 //import { Header } from '../../Components/Header/Header';
-import { Back } from '../../Components/Back/Back';
-import "./moviepage.css"
+import { Back } from "../../Components/Back/Back";
+import "./moviepage.css";
 
 const showtimes = () => {
   var mylist = document.getElementById("myList");
-  document.getElementById("favourite").value = mylist.options[mylist.selectedIndex].text;
-  }
+  document.getElementById("favourite").value =
+    mylist.options[mylist.selectedIndex].text;
+};
 
 // Page for Individual Movies
 const Moviepage = () => {
@@ -19,21 +20,22 @@ const Moviepage = () => {
           <label>List of movies:</label>
         </div>
         <b> Select a showtime </b>
-        <select id="myList" onchange="showtimes()" >
+        <select id="myList" onchange="showtimes()">
           <option> ---Choose a showtime--- </option>
           <option> ? </option>
           <option> ?? </option>
           <option> ??? </option>
           <option> ???? </option>
         </select>
-        <p> Your selected tutorial site is:
+        <p>
+          {" "}
+          Input:
           <input type="text" id="favourite" size="20"></input>
-          </p>
-  
+        </p>
         <Back />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Moviepage
+export default Moviepage;
