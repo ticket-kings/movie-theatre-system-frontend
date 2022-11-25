@@ -4,3 +4,8 @@
     color: black;
     background: beige;
 }
+
+.registration > input {
+    margin: 0.5 rem;
+    border: 1px solid rgb(163, 163, 173);
+}

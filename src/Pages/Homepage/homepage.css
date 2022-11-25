@@ -12,3 +12,8 @@
 .corner {
     text-align: left;
 }
+
+.home > input {
+    margin: 0.5rem;
+    border: 1px solid rgb(163, 163, 173);
+}

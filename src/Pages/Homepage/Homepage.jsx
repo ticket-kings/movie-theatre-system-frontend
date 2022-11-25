@@ -17,7 +17,7 @@ const Homepage = () => {
           <p> Book a movie now! </p>
           <input type="searchMovie" placeholder='Movie' />
           <button>Search for Movie</button>
-          <button> View all Movies</button>
+          <button onClick={() => navigate("/movie")}>View all Movies</button>
         </div>
       </div>
   );

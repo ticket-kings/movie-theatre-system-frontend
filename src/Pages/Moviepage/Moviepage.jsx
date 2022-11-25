@@ -3,21 +3,36 @@ import React from 'react'
 import { Back } from '../../Components/Back/Back';
 import "./moviepage.css"
 
+const showtimes = () => {
+  var mylist = document.getElementById("myList");
+  document.getElementById("favourite").value = mylist.options[mylist.selectedIndex].text;
+  }
+
 // Page for Individual Movies
 const Moviepage = () => {
   return (
     <div className="movie">
-    {/* <Header /> */}
-    <div>
-      <h1>Movie</h1>
-      <div className="card">
-        <input type="searchMovie" placeholder='Movie'/>
-        <button>Search for Movie</button>
+      {/* <Header /> */}
+      <div>
+        <h1>Movie</h1>
+        <div className="card">
+          <label>List of movies:</label>
+        </div>
+        <b> Select a showtime </b>
+        <select id="myList" onchange="showtimes()" >
+          <option> ---Choose a showtime--- </option>
+          <option> ? </option>
+          <option> ?? </option>
+          <option> ??? </option>
+          <option> ???? </option>
+        </select>
+        <p> Your selected tutorial site is:
+          <input type="text" id="favourite" size="20"></input>
+          </p>
+  
+        <Back />
       </div>
-      <button> View all Movies</button>
-      <Back />
     </div>
-  </div>
   )
 }
 

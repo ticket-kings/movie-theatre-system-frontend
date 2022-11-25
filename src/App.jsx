@@ -13,6 +13,7 @@ function App() {
       <Route path="login" element={<Loginpage />}></Route>
       <Route path="register" element={<Registrationpage />}></Route>
       <Route path = "movie" element={<Moviepage />}></Route>
+      
 
     </Routes>
   )

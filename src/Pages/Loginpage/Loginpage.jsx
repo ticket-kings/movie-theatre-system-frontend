@@ -8,7 +8,7 @@ const Loginpage = () => {
       <Header />
       <div>
         <h1>Login</h1>
-        <div className="card">
+        <div className="login">
           <p>Please login if you are a registered user</p>
           <input type="email" placeholder='email'/>
           <input type="password" placeholder='password' />
