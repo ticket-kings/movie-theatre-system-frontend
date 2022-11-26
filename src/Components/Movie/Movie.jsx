@@ -14,11 +14,15 @@ export const Movie = ({ movie }) => {
     <div>
       <p>{movie.name}</p>
       <img className="page_movie_image"
-      src={movie.image}
+      src={movie.image_url}
       width={200}
       height={280}
       onClick={() => navigateToMoviePage(movie.id)}
       />
+      <div>
+      <p>{movie.description}</p>
+      <h3>Duration: </h3> <p>{movie.duration}</p>
+      </div>
     </div>
   );
 };

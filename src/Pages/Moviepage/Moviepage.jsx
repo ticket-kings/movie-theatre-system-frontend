@@ -17,20 +17,28 @@ const Moviepage = () => {
     {
       id: 0,
       name: "Black Panther: Wakanda Forever",
-      image: "https://m.media-amazon.com/images/M/MV5BNTM4NjIxNmEtYWE5NS00NDczLTkyNWQtYThhNmQyZGQzMjM0XkEyXkFqcGdeQXVyODk4OTc3MTY@._V1_FMjpg_UX1000_.jpg",
+      image_url: "https://m.media-amazon.com/images/M/MV5BNTM4NjIxNmEtYWE5NS00NDczLTkyNWQtYThhNmQyZGQzMjM0XkEyXkFqcGdeQXVyODk4OTc3MTY@._V1_FMjpg_UX1000_.jpg",
+      description: "Description 1",
+      duration: 166,
+      is_released: true,
     },
     {
       id: 1,
       name: "Avatar: The Way of Water",
-      image: "https://preview.redd.it/k2u12aobjgy81.jpg?auto=webp&s=c1b783b53f910ee9a18c451a38015ce5c9c1f7fc",
+      image_url: "https://preview.redd.it/k2u12aobjgy81.jpg?auto=webp&s=c1b783b53f910ee9a18c451a38015ce5c9c1f7fc",
+      description: "Description 2",
+      duration: 166,
+      is_released: true, 
     },   
     {
       id: 3,
       name: "Black Adam",
-      image: "https://www.theilluminerdi.com/wp-content/uploads/2022/09/black-adam-heroes.jpg",
+      image_url: "https://www.theilluminerdi.com/wp-content/uploads/2022/09/black-adam-heroes.jpg",
+      description: "Description 3",
+      duration: 166,
+      is_released: true,
     },   
   ])
-
 
   return (
     <div className="movie">
