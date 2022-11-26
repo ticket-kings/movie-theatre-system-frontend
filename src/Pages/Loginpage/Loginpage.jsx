@@ -2,11 +2,15 @@ import React, { useState } from 'react'
 import { Header } from '../../Components/Header/Header';
 import "./loginpage.css";
 
+import { useNavigate } from "react-router-dom";
+
 
 
 const Loginpage = () => {
+  const navigate = useNavigate();
   const [username, setUsername] = useState("Default username");
   const [password, setPassword] = useState("Default password");
+
 
   const signIn = async () => {
     console.log(username);
@@ -19,10 +23,18 @@ const Loginpage = () => {
         } else {
           sessionStorage.setItem("username", username);
           sessionStorage.setItem('password', password);
-          () => navigate("/"); // Not working? Need to navigate to homepage after login.
+          sessionStorage.setItem('isLoggedIn',true);
+          navigate('/');
           return response.json()
-        }})
-      .then((data) => console.log(data))
+        }
+      })
+      .then((data) => {
+        console.log(data)
+        let firstName = data.firstName;
+        let emailAddress = data.emailAddress;
+        sessionStorage.setItem("fistName", firstName);
+        sessionStorage.setItem('emailAddress', emailAddress);
+      })
       .catch((error) => {
         alert(error)
       });
