@@ -1,15 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import "./header.css";
 
 import { useNavigate } from "react-router-dom";
 import crownLogo from "../../Assets/crownlogowhite.jpg";
 
 export const Header = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
   const navigate = useNavigate();
 
   return (
     <div className="header_container">
-      <p className="corner"> Welcome Guest User! </p>
+      <div className="corner"> {isLoggedIn? (<p>Welcome Registered User</p>) : (<p>Welcome Guest User!</p>)} </div>
       <div className="header_logo">
         <a href="/">
           <img src={crownLogo} className="logo" alt="crown logo" />

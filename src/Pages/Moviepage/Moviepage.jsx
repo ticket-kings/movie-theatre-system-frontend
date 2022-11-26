@@ -31,11 +31,17 @@ const Moviepage = () => {
           {" "}
           Input:
           <input type="text" id="favourite" size="20"></input>
+          <button type="button" id ="select" class ="btn btn-primary"> Select a seat </button>
         </p>
         <Back />
       </div>
     </div>
   );
 };
+
+const selectSeat = () => {
+
+}
+
 
 export default Moviepage;
