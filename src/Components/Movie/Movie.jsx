@@ -14,7 +14,7 @@ export const Movie = ({ movie }) => {
     <div>
       <p>{movie.name}</p>
       <img className="page_movie_image"
-      src={movie.image_url}
+      src={movie.imageUrl}
       width={200}
       height={280}
       onClick={() => navigateToMoviePage(movie.id)}

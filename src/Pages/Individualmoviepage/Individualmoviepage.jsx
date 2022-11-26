@@ -1,66 +1,96 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Header } from "../../Components/Header/Header";
-import seatIcon from "../../Assets/seat.png"
+import seatIcon from "../../Assets/seat.png";
 import "./individualmoviepage.css";
 
 const Individualmoviepage = () => {
+  const [seats, setSeats] = useState([]);
+  const [movie, setMovie] = useState({});
 
-    const [seats, setSeats] = useState([
-        {
-            price: 10,
-            seat_number: "A1",
-            premium: true,
-            reserved: false,
-            showtime_id: 1,
-        },
-        {
-            price: 10,
-            seat_number: "A2",
-            premium: true,
-            reserved: true,
-            showtime_id: 1,
-        },
-        {
-            price: 10,
-            seat_number: "A3",
-            premium: true,
-            reserved: true,
-            showtime_id: 1,
-        },
-    ])
+  const [chosenSeat, setChosenSeat] = useState();
 
-    const [chosenSeat, setChosenSeat] = useState();
+  const chooseSeat = (seat) => {
+    setChosenSeat(seat.seatNumber);
+  };
 
-    const chooseSeat = (seat) => {
-        setChosenSeat(seat.seat_number)
-    }
+  const getTickets = () => {
+    console.log("Tickets");
+  };
 
-    const getTickets = () => {
-        console.log("Tickets")
-    }
+  const backend_endpoint = "http://localhost:8080";
+
+  const fetchMovie = async () => {
+    await fetch(`${backend_endpoint}/api/v1/movie`)
+      .then((res) => res.json())
+      .then((data) => setMovie(data[0]))
+      .catch((error) => console.log(error));
+  };
+
+  const fetchSeats = async () => {
+    await fetch(`${backend_endpoint}/api/v1/showtime`)
+      .then((res) => res.json())
+      .then((data) => setSeats(data[0].seats)) // Change this dynamically for chosen showtime!
+      .catch((error) => console.log(error));
+  };
+
+  useEffect(() => {
+    fetchMovie();
+    fetchSeats();
+  }, []);
 
   return (
     <div className="productpage_container">
       <Header />
+      {console.log(movie)}
       <div className="individualproduct_container">
-        <h1>Movie Name</h1>
+        <h1>{movie.name}</h1>
         <img
-        src="https://m.media-amazon.com/images/M/MV5BNTM4NjIxNmEtYWE5NS00NDczLTkyNWQtYThhNmQyZGQzMjM0XkEyXkFqcGdeQXVyODk4OTc3MTY@._V1_FMjpg_UX1000_.jpg"
-        width={400}
-        height={600}
+          src={movie.imageUrl}
+          width={400}
+          height={600}
         />
-        <p>Movie Description</p>
-        <p>Movie Price</p>
-        <div className="addtocart_button">
-            <button onClick={() => getTickets()} >Get Tickets</button>
-        </div>
+        <p>{movie.description}</p>
+        <p>$10.00</p>
       </div>
+
       <div>
-        <h2>Seats</h2>
+        <h2>Showtimes:</h2>
+        <button>Showtime 1 (not implemented yet)</button>
+        <button>Showtime 2 (not implemented yet)</button>
+      </div>
+
+      <div>
+        <h2>Seats:</h2>
         <div className="seats">
-        {seats.map((seat) => (<div>{seat.seat_number}<img src={seatIcon} width={30} onClick={() => chooseSeat(seat)}/></div>))}
+          {seats &&
+            seats.slice(0, 5).map((seat, index) => (
+              <div key={index}>
+                {seat.seatNumber}
+                <img
+                  src={seatIcon}
+                  width={30}
+                  onClick={() => chooseSeat(seat)}
+                />
+              </div>
+            ))}
+        </div>
+        <div className="seats">
+          {seats &&
+            seats.slice(5, 10).map((seat, index) => (
+              <div key={index}>
+                {seat.seatNumber}
+                <img
+                  src={seatIcon}
+                  width={30}
+                  onClick={() => chooseSeat(seat)}
+                />
+              </div>
+            ))}
         </div>
         <p>Your chosen seat is: {chosenSeat}</p>
+      </div>
+      <div className="addtocart_button">
+        <button onClick={() => getTickets()}>Get Tickets</button>
       </div>
     </div>
   );
