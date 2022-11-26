@@ -4,6 +4,7 @@ import Homepage from "./Pages/Homepage/Homepage";
 import Loginpage from './Pages/Loginpage/Loginpage';
 import Registrationpage from './Pages/Registrationpage/Registrationpage';
 import Moviepage from './Pages/Moviepage/Moviepage';
+import Individualmoviepage from './Pages/Individualmoviepage/Individualmoviepage';
 
 function App() {
 
@@ -13,7 +14,7 @@ function App() {
       <Route path="/login" element={<Loginpage />}></Route>
       <Route path="/register" element={<Registrationpage />}></Route>
       <Route path="/movie" element={<Moviepage />}></Route>
-      
+      <Route path="/movie/:movieId" element={<Individualmoviepage />}></Route>
 
     </Routes>
   )

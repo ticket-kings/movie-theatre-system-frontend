@@ -1,0 +1,8 @@
+.seats {
+    display: flex;
+    flex-direction: row;
+}
+
+.seats > div {
+    margin-left: 2rem;
+}

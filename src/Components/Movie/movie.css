@@ -4,3 +4,7 @@
     color: black;
     background: beige;
 }
+
+.page_movie_image {
+    cursor: pointer;
+}
