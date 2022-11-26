@@ -1,3 +1,8 @@
+.moviepage_container {
+    background-color: black;
+    color: white;
+}
+
 .seats {
     display: flex;
     flex-direction: row;
