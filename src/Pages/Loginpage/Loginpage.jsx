@@ -8,20 +8,20 @@ import { useNavigate } from "react-router-dom";
 
 const Loginpage = () => {
   const navigate = useNavigate();
-  const [username, setUsername] = useState("Default username");
+  const [email, setEmail] = useState("Default email");
   const [password, setPassword] = useState("Default password");
 
 
   const signIn = async () => {
-    console.log(username);
+    console.log(email);
     console.log(password);
 
-    let response = await fetch('http://localhost:8080/api/v1/user/registered/login?id=' + username + '&password=' + password)
+    let response = await fetch('http://localhost:8080/api/v1/user/registered/login?email=' + email + '&password=' + password)
       .then((response) => {
         if (!response.ok) {
           throw new Error('Incorrect Username and/ or Password');
         } else {
-          sessionStorage.setItem("username", username);
+          sessionStorage.setItem("email", email);
           sessionStorage.setItem('password', password);
           sessionStorage.setItem('isLoggedIn',true);
           navigate('/');
@@ -31,9 +31,7 @@ const Loginpage = () => {
       .then((data) => {
         console.log(data)
         let firstName = data.firstName;
-        let emailAddress = data.emailAddress;
         sessionStorage.setItem("fistName", firstName);
-        sessionStorage.setItem('emailAddress', emailAddress);
       })
       .catch((error) => {
         alert(error)
@@ -42,8 +40,8 @@ const Loginpage = () => {
   }
 
 
-  const updateUsername = (e) => {
-    setUsername(e.target.value);
+  const updateEmail = (e) => {
+    setEmail(e.target.value);
   }
 
   const updatePassword = (e) => {
@@ -57,7 +55,7 @@ const Loginpage = () => {
         <h1>Login</h1>
         <div className="login">
           <p>Please login if you are a registered user</p>
-          <input id="username" type="user" onChange={updateUsername} placeholder='user name' />
+          <input id="email" type="user" onChange={updateEmail} placeholder='email address' />
           <input id="password" type="password" onChange={updatePassword} placeholder='password' />
           <button id="login" type="button" onClick={() => signIn()} >Login</button>
         </div>

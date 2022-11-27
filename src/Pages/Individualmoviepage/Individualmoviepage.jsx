@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Header } from "../../Components/Header/Header";
 import seatIcon from "../../Assets/seatinverse.png";
+import { Back } from "../../Components/Back/Back";
 import "./individualmoviepage.css";
 
 const Individualmoviepage = () => {
@@ -19,8 +20,9 @@ const Individualmoviepage = () => {
     setChosenSeat(seat.seatNumber);
   };
 
-  const getTickets = () => {
-    console.log("Get Tickets");
+  const navigateToPaymentPage = () => {
+    //navigate(`/movie/`+movie.id+'/ticket')
+    navigate('/ticket');
   };
 
   const backend_endpoint = "http://localhost:8080";
@@ -98,8 +100,9 @@ const Individualmoviepage = () => {
         <p>Your chosen seat is: {chosenSeat}</p>
       </div>
       <div className="addtocart_button">
-        <button onClick={() => getTickets()}>Get Tickets</button>
+        <button onClick={() => navigateToPaymentPage()}>Get Tickets</button>
       </div>
+      <Back/>
     </div>
   );
 };

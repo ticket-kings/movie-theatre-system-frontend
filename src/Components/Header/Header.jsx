@@ -28,9 +28,15 @@ export const Header = () => {
         </a>
       </div>
       <div className="header_login">
-        <button onClick={() => navigate("/")}>Home</button>
-        <button onClick={() => navigate("/login")}>Login</button>
-        <button onClick={() => navigate("/register")}>Registration</button>
+        <button onClick={() => navigate("/")}>
+          Home
+          </button>
+          {isLoggedIn?
+          <button onClick={() => navigate("/")}>Logout</button> : 
+          <div> <button onClick={() => navigate("/login")}>Login</button> 
+          <button onClick={() => navigate("/register")}>Registration</button> 
+          </div>
+          }
       </div>
     </div>
   );

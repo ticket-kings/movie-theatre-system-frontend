@@ -1,14 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Header } from '../../Components/Header/Header';
-import "./seatpage.css";
+import { Back } from "../../Components/Back/Back";
+import "./ticketpage.css";
 
-const Seatpage = () => {
+const Ticketpage = () => {
     return (
-      <div className="movie">
+      <div className="Ticket">
         {/* <Header /> */}
         <div>
-          <h1>Movie</h1>
-          <b> Select a seat </b>
+          <h1>Payment</h1>
+          <b> Payment </b>
           <p>
             {" "}
             Input:
@@ -21,4 +22,4 @@ const Seatpage = () => {
     );
   };
   
-  export default Seatpage;
+  export default Ticketpage
