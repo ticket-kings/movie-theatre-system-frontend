@@ -31,7 +31,8 @@ const Homepage = () => {
   }
 
   const searchMovie = () => {
-    //search for the movie via the entered name?
+    sessionStorage.setItem("searchedMovie", movie)
+    navigate('/search');
   }
 
   const updateTicketId = (e) => {

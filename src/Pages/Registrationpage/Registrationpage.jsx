@@ -8,6 +8,9 @@ const Registrationpage = () => {
   const [verifiedPassword, setVerifiedPassword] = useState("Default password");
   const [address, setAddress] = useState("Default Address");
   const [email, setEmail] = useState("Default Email");
+  const [cardNumber, setCard] = useState("Default Credit Card Number");
+  const [cardExpire, setExpire] = useState("Default Credit Card Expire Date");
+  const [cvv, setCvv] = useState("Default CVV");
 
   const register = async () => {
     console.log(name);
@@ -34,7 +37,13 @@ const Registrationpage = () => {
           creditId: null,
           credit: null,
           cardId: null,
-          card: null,
+          card: {
+            id: null,
+            cardNumber: cardNumber,
+            expiryDate: cardExpire,
+            cvv: cvv,
+            payments: null
+          },
           address: address,
           password: verifiedPassword
         }),
@@ -78,6 +87,18 @@ const Registrationpage = () => {
     setEmail(e.target.value);
   }
 
+  const updateCard = (e) => {
+    setCard(e.target.value);
+  }
+
+  const updateExpireDate = (e) => {
+    setExpire(e.target.value);
+  }
+
+  const updateCvv = (e) => {
+    setCvv(e.target.value);
+  }
+
   return (
     <div className="registration">
       <Header />
@@ -101,7 +122,15 @@ const Registrationpage = () => {
             <label htmlFor="verifyPassword">Verify Password</label><br></br>
             <input id="verifyPassword" type="text" onChange={updateVerifiedPassword} placeholder='verify password..' /><br></br>
 
-            
+            <label htmlFor="cardNumber">Credit Card Number</label><br></br>
+            <input id="cardNumber" type="text" onChange={updateCard} placeholder='credit card number..' /><br></br>
+
+            <label htmlFor="creditCardExpire">Credit Card Expire Date</label><br></br>
+            <input id="creditCardExpire" type="text" onChange={updateExpireDate} placeholder='credit card expire date..' /><br></br>
+
+            <label htmlFor="cvv">CVV</label><br></br>
+            <input id="cvv" type="text" onChange={updateCvv} placeholder='CVV..' /><br></br>
+
 
             <button id="login" type="button" onClick={() => register()}>Register </button>
           </form>

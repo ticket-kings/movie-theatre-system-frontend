@@ -19,7 +19,7 @@ const Loginpage = () => {
     let response = await fetch('http://localhost:8080/api/v1/user/registered/login?email=' + email + '&password=' + password)
       .then((response) => {
         if (!response.ok) {
-          throw new Error('Incorrect Username and/ or Password');
+          throw new Error('Incorrect Email and/ or Password');
         } else {
           sessionStorage.setItem("email", email);
           sessionStorage.setItem('password', password);
