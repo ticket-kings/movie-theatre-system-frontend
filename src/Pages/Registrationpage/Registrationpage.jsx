@@ -108,16 +108,16 @@ const Registrationpage = () => {
           <form>
             <p>Please input the below information to register:</p>
             <label htmlFor="name">First Name</label><br></br>
-            <input id="name" type="text" onChange={updateName} placeholder='your name..' required /><br></br>
+            <input id="name" type="text" onChange={updateName} placeholder='name..' required /><br></br>
 
             <label htmlFor="email">Email Address</label><br></br>
-            <input id="email" type="text" onChange={updateEmail} placeholder='your email..' /><br></br>
+            <input id="email" type="text" onChange={updateEmail} placeholder='email..' /><br></br>
 
             <label htmlFor="address">Home Address</label><br></br>
-            <input id="address" type="text" onChange={updateAddress} placeholder='your address..' /><br></br>
+            <input id="address" type="text" onChange={updateAddress} placeholder='address..' /><br></br>
 
             <label htmlFor="password">Password</label><br></br>
-            <input id="password" type="text" onChange={updatePassword} placeholder='your password..' /><br></br>
+            <input id="password" type="text" onChange={updatePassword} placeholder='password..' /><br></br>
 
             <label htmlFor="verifyPassword">Verify Password</label><br></br>
             <input id="verifyPassword" type="text" onChange={updateVerifiedPassword} placeholder='verify password..' /><br></br>
@@ -125,8 +125,8 @@ const Registrationpage = () => {
             <label htmlFor="cardNumber">Credit Card Number</label><br></br>
             <input id="cardNumber" type="text" onChange={updateCard} placeholder='credit card number..' /><br></br>
 
-            <label htmlFor="creditCardExpire">Credit Card Expire Date</label><br></br>
-            <input id="creditCardExpire" type="text" onChange={updateExpireDate} placeholder='credit card expire date..' /><br></br>
+            <label htmlFor="creditCardExpire">Credit Card Expiry Date</label><br></br>
+            <input id="creditCardExpire" type="text" onChange={updateExpireDate} placeholder='dd/mm/yy' /><br></br>
 
             <label htmlFor="cvv">CVV</label><br></br>
             <input id="cvv" type="text" onChange={updateCvv} placeholder='CVV..' /><br></br>
