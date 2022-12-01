@@ -35,7 +35,6 @@ const Registrationpage = () => {
           name: name,
           emailAddress: email,
           creditId: null,
-          credit: null,
           cardId: null,
           card: {
             id: null,

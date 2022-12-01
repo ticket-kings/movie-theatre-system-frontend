@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Header } from "../../Components/Header/Header";
 import seatIcon from "../../Assets/seatinverse.png";
 import { Back } from "../../Components/Back/Back";
@@ -14,6 +14,7 @@ const Individualmoviepage = () => {
   const [chosenSeat, setChosenSeat] = useState({});
 
   const params = useParams();
+  const navigate = useNavigate();
 
   const backend_endpoint = "http://localhost:8080";
 
@@ -46,8 +47,11 @@ const Individualmoviepage = () => {
   };
 
   const navigateToPaymentPage = () => {
-    //navigate(`/movie/`+movie.id+'/ticket')
-    navigate("/ticket");
+    if(sessionStorage.getItem("IsLoggedIn") != "True") {
+      navigate(`/movie/`+movie.id+'/payment')
+    }
+    
+    //navigate("/ticket");
   };
 
   return (
