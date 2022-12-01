@@ -9,7 +9,7 @@ export const Header = () => {
   
   const updateLogin = () => {
     console.log(sessionStorage.getItem("isLoggedIn"));
-    if (sessionStorage.getItem("isLoggedIn") != null) {
+    if (sessionStorage.getItem("isLoggedIn") != "null") {
       setIsLoggedIn(true);
     }
   }
@@ -19,7 +19,8 @@ export const Header = () => {
   }, [])
 
   const handleLogout = () => {
-    sessionStorage.setItem("isLoggedIn", null);
+    sessionStorage.setItem("isLoggedIn", "null");
+    setIsLoggedIn(false);
   }
 
   const navigate = useNavigate();
