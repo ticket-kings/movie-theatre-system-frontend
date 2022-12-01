@@ -47,10 +47,7 @@ const Individualmoviepage = () => {
   };
 
   const navigateToPaymentPage = () => {
-    if(sessionStorage.getItem("IsLoggedIn") != "True") {
       navigate(`/movie/`+movie.id+'/payment')
-    }
-    
     //navigate("/ticket");
   };
 
