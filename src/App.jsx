@@ -5,8 +5,9 @@ import Loginpage from './Pages/Loginpage/Loginpage';
 import Registrationpage from './Pages/Registrationpage/Registrationpage';
 import Moviepage from './Pages/Moviepage/Moviepage';
 import Individualmoviepage from './Pages/Individualmoviepage/Individualmoviepage';
-import Ticketpage from './Pages/Ticketpage/Ticketpage'
+import Paymentpage from './Pages/Paymentpage/Paymentpage'
 import Searchpage from './Pages/Searchpage/Searchpage'
+import Ticketpage from './Pages/Ticketpage/Ticketpage'
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
       <Route path="/register" element={<Registrationpage />}></Route>
       <Route path="/movie" element={<Moviepage />}></Route>
       <Route path="/movie/:movieId" element={<Individualmoviepage />}></Route>
+      <Route path="/movie/:movieId/payment" element={<Paymentpage />}></Route>
       <Route path="/ticket" element={<Ticketpage />}></Route>
       <Route path="/search" element={<Searchpage />}></Route>
 

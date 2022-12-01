@@ -23,7 +23,7 @@ const Loginpage = () => {
         } else {
           sessionStorage.setItem("email", email);
           sessionStorage.setItem('password', password);
-          sessionStorage.setItem('isLoggedIn',true);
+          sessionStorage.setItem('isLoggedIn',"True");
           navigate('/');
           return response.json()
         }
