@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import "./header.css";
 
 import { useNavigate } from "react-router-dom";
@@ -7,15 +7,20 @@ import crownLogo from "../../Assets/crownlogowhite.jpg";
 export const Header = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false); //useToggle();
   
-  // const updateLogin = () => {
-  //   if (sessionStorage.getItem("isLoggedIn") != 1) {
-  //     setIsLoggedIn(true);
-  //   }
-  //   console.log("test")
-  // }
+  const updateLogin = () => {
+    console.log(sessionStorage.getItem("isLoggedIn"));
+    if (sessionStorage.getItem("isLoggedIn") != null) {
+      setIsLoggedIn(true);
+    }
+  }
 
-  // updateLogin();
-  // console.log(isLoggedIn)
+  useEffect(() => {
+    updateLogin();
+  }, [])
+
+  const handleLogout = () => {
+    sessionStorage.setItem("isLoggedIn", null);
+  }
 
   const navigate = useNavigate();
 
@@ -32,7 +37,7 @@ export const Header = () => {
           Home
           </button>
           {isLoggedIn?
-          <button onClick={() => navigate("/")}>Logout</button> : 
+          <button onClick={() => handleLogout()}>Logout</button> : 
           <div> <button onClick={() => navigate("/login")}>Login</button> 
           <button onClick={() => navigate("/register")}>Registration</button> 
           </div>
