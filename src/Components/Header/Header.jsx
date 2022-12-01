@@ -8,18 +8,20 @@ export const Header = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false); //useToggle();
   
   const updateLogin = () => {
-    console.log(sessionStorage.getItem("isLoggedIn"));
-    if (sessionStorage.getItem("isLoggedIn") != null) {
+    console.log(sessionStorage.getItem("userId"));
+    if (sessionStorage.getItem("userId") != null || sessionStorage.getItem("userId") != "null") {
       setIsLoggedIn(true);
     }
   }
 
   useEffect(() => {
     updateLogin();
+    console.log(sessionStorage.getItem("userId"));
   }, [])
 
   const handleLogout = () => {
-    sessionStorage.setItem("isLoggedIn", null);
+    sessionStorage.setItem("userId", "null");
+    setIsLoggedIn(false);
   }
 
   const navigate = useNavigate();

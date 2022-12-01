@@ -22,16 +22,15 @@ const Loginpage = () => {
           throw new Error('Incorrect Email and/ or Password');
         } else {
           sessionStorage.setItem("email", email);
-          sessionStorage.setItem('password', password);
-          sessionStorage.setItem('isLoggedIn',"True");
+          sessionStorage.setItem('isLoggedIn',"true");
           navigate('/');
           return response.json()
         }
       })
       .then((data) => {
         console.log(data)
-        let firstName = data.firstName;
-        sessionStorage.setItem("fistName", firstName);
+        sessionStorage.setItem("userId", data.id);
+        sessionStorage.setItem("firstName", data.name);
       })
       .catch((error) => {
         alert(error)

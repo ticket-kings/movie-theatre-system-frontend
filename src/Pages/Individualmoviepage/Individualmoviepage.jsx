@@ -50,9 +50,8 @@ const Individualmoviepage = () => {
     sessionStorage.setItem("seat", chosenSeat)
     if(sessionStorage.getItem("IsLoggedIn") != "True") {
       navigate(`/movie/`+movie.id+'/payment')
-    }
-    
     //navigate("/ticket");
+    }
   };
 
   return (
@@ -123,4 +122,4 @@ const Individualmoviepage = () => {
   );
 };
 
-export default Individualmoviepage;
+export default Individualmoviepage
