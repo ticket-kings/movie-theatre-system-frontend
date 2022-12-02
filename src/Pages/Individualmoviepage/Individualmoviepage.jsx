@@ -54,7 +54,11 @@ const Individualmoviepage = () => {
   };
 
   const navigateToPaymentPage = () => {
-    navigate(`/movie/`+movie.id+'/payment')
+    if (chosenSeat.id == undefined) {
+      window.alert("Please choose a seat");
+    } else {
+      navigate(`/movie/`+movie.id+'/payment')
+    }
   };
 
   return (
@@ -85,6 +89,7 @@ const Individualmoviepage = () => {
             seats &&
             seats.slice(0, 5).map((seat, index) => (
               <div key={index}>
+                {console.log(seat.seatNumber, seat.reserved)}
                 {seat.seatNumber}
                 {seat.reserved==false ? (                 
                 <img

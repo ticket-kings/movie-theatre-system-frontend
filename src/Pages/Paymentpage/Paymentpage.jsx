@@ -30,6 +30,12 @@ const Paymentpage = () => {
       alert("Please enter a valid name.")
     } else if (email == "Default Email") {
       alert("Please enter a valid email address")
+    } else if (cardNumber.length != 12) {
+      alert("Card Number needs to be 12 numbers")
+    } else if (cardExpiryDate.length != 4) {
+      alert("Expiry Date should be 4 numbers (MMYY)")
+    } else if (cvv.length != 3) {
+      alert("CVV should be 3 numbers")
     } else {
     //creating guest user
     let response1 = await fetch('http://localhost:8080/api/v1/user/guest', {
@@ -125,17 +131,17 @@ const Paymentpage = () => {
             <label htmlFor="email">Email Address</label><br></br>
             <input id="email" type="text" onChange={updateEmail} placeholder='email..' /><br></br>
 
-            <label htmlFor="cardNumber">Credit Card Number</label><br></br>
-            <input id="cardNumber" type="text" onChange={updateCard} placeholder='credit card number..' /><br></br>
+            <label htmlFor="cardNumber">Credit Card Number (ex. 614012345678)</label><br></br>
+            <input id="cardNumber" type="number" onChange={updateCard} placeholder='Credit Card Number (12 Digits)'  /><br></br>
 
-            <label htmlFor="creditCardExpiryDate">Credit Card Expiry Date</label><br></br>
-            <input id="creditCardExpiryDate" type="text" onChange={updateExpireDate} placeholder='dd/mm/yy' /><br></br>
+            <label htmlFor="creditCardExpiryDate">Credit Card Expiry Date (ex. 0124)</label><br></br>
+            <input id="creditCardExpiryDate" type="number" onChange={updateExpireDate} placeholder='MMYY' /><br></br>
 
-            <label htmlFor="cvv">CVV</label><br></br>
-            <input id="cvv" type="text" onChange={updateCvv} placeholder='CVV..' /><br></br>
+            <label htmlFor="cvv">CVV (ex. 143)</label><br></br>
+            <input id="cvv" type="number" onChange={updateCvv} placeholder='CVV (3 Digits)'/><br></br>
 
             <label htmlFor="creditCode">Coupon Code</label><br></br>
-            <input id="creditCode" type="text" onChange={updateCredit} placeholder='Coupon code (credit)' /><br></br>
+            <input id="creditCode" type="text" onChange={updateCredit} placeholder='Credit Coupon Code (Optional)' /><br></br>
 
             <button id="login" type="button" onClick={() => createGuestUser()}>Complete Purchase as Guest </button>
           </form>

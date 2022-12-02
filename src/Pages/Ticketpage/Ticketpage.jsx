@@ -1,11 +1,24 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Header } from '../../Components/Header/Header';
 import { Back } from "../../Components/Back/Back";
 import "./ticketpage.css";
+import { Navigate, useNavigate } from 'react-router-dom';
 
 const Ticketpage = () => {
+    const navigate = useNavigate();
+
     const [cardId, setCardId] = useState(sessionStorage.getItem("cardId"));
     const [seat, setSeatId] = useState(sessionStorage.getItem("seat"));
+
+    const [purchasedPayment, setPurchasedPayment] = useState();
+
+    const runOnce = useRef(false);
+
+    useEffect(() => {
+      if (runOnce.current) return;
+      createTicket();
+      return () => (runOnce.current = true);
+    })
 
     const createTicket = async () => {
         console.log(cardId);
@@ -34,6 +47,11 @@ const Ticketpage = () => {
           })
           .then((data) => {
             console.log(data)
+            if (data.status != 400) {
+              setPurchasedPayment(data);
+            } else {
+              navigate("/");
+            }
           });
       }
 
@@ -43,9 +61,16 @@ const Ticketpage = () => {
           <div>
             <h1>Ticket</h1>
             <div className="ticketpage_container">
-              <form>
-                <button id="login" type="button" onClick={() => createTicket()}>Print Ticket </button>
-              </form>
+              {
+                purchasedPayment!=undefined ? (<div>
+                <p>Seat: {purchasedPayment.seat && purchasedPayment.seat.seatNumber}</p>
+                <p>Price: ${purchasedPayment.payment && purchasedPayment.payment.amount}</p>
+                <p>Purchase Date: {purchasedPayment.payment && purchasedPayment.payment.paymentDate}</p>
+                  </div>) :
+                  (
+                    <div><p>No Ticket</p></div>
+                  )
+              }
               <Back />
             </div>
           </div>
