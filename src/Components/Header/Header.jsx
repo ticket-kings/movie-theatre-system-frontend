@@ -9,7 +9,7 @@ export const Header = () => {
   
   const updateLogin = () => {
     console.log(sessionStorage.getItem("userId"));
-    if (sessionStorage.getItem("userId") != null || sessionStorage.getItem("userId") != "null") {
+    if (sessionStorage.getItem("userId") != null && sessionStorage.getItem("userId") != "null") {
       setIsLoggedIn(true);
     }
   }
