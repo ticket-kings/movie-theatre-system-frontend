@@ -14,13 +14,14 @@ export const Header = () => {
   }
 
   useEffect(() => {
-    console.log(sessionStorage.getItem("firstName"));
+    console.log("User Id:",sessionStorage.getItem("userId"));
     updateLogin();
   }, [])
 
   const handleLogout = () => {
     sessionStorage.setItem("userId", "null");
     setIsLoggedIn(false);
+    navigate("/")
   }
 
   const navigate = useNavigate();
