@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Header } from "../../Components/Header/Header";
 import seatIcon from "../../Assets/seatinverse.png";
+import seatReservedIcon from "../../Assets/seatinversetaken.png";
 import { Back } from "../../Components/Back/Back";
 import "./individualmoviepage.css";
 
@@ -47,6 +48,11 @@ const Individualmoviepage = () => {
     setChosenSeat(seat);
   };
 
+  const chooseTakenSeat = (seat) => {
+    let string = "Seat " + seat.seatNumber + " is reserved! Please choose another."
+    window.alert(string)
+  };
+
   const navigateToPaymentPage = () => {
     navigate(`/movie/`+movie.id+'/payment')
   };
@@ -80,11 +86,19 @@ const Individualmoviepage = () => {
             seats.slice(0, 5).map((seat, index) => (
               <div key={index}>
                 {seat.seatNumber}
+                {seat.reserved==false ? (                 
                 <img
                   src={seatIcon}
                   width={30}
                   onClick={() => chooseSeat(seat)}
                 />
+                ) : (                 
+                <img
+                  src={seatReservedIcon}
+                  width={30}
+                  onClick={() => chooseTakenSeat(seat)}
+                />
+                )}
               </div>
             ))}
         </div>
@@ -94,11 +108,19 @@ const Individualmoviepage = () => {
             seats.slice(5, 10).map((seat, index) => (
               <div key={index}>
                 {seat.seatNumber}
+                {seat.reserved==false ? (                 
                 <img
                   src={seatIcon}
                   width={30}
                   onClick={() => chooseSeat(seat)}
                 />
+                ) : (                 
+                <img
+                  src={seatReservedIcon}
+                  width={30}
+                  onClick={() => chooseTakenSeat(seat)}
+                />
+                )}
               </div>
             ))}
         </div>
