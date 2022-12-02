@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 const Paymentpage = () => {
   const [name, setName] = useState("Default name");
   //const [password, setPassword] = useState("Default password");
-  //const [creditCode, setCreditCode] = useState("Default password");
+  const [creditCode, setCreditCode] = useState();
   const [email, setEmail] = useState("Default Email");
   const [cardNumber, setCardNumber] = useState("Default Credit Card Number");
   const [cardExpiryDate, setExpiryDate] = useState("Default Credit Card Expire Date");
@@ -44,8 +44,6 @@ const Paymentpage = () => {
         id: null,
         name: name,
         emailAddress: email,
-        creditId: null,
-        cardId: null,
         card: {
           id: null,
           cardNumber: cardNumber,
@@ -116,6 +114,22 @@ const Paymentpage = () => {
     setCvv(e.target.value);
   }
 
+  const checkCoupon = async () => {
+    await fetch(`${backend_endpoint}/api/v1/credit/${creditCode}`)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.status != 400) {
+          var string = "Coupon is valid. Amount is " + data.amount;
+          alert(string)
+        } else {
+          alert("Coupon is invalid.")
+        }
+
+      })
+      .catch((error) => console.log(error));
+  }
+
   return (
     <div className="paymentpage_container">
       <Header />
@@ -143,6 +157,8 @@ const Paymentpage = () => {
             <label htmlFor="creditCode">Coupon Code</label><br></br>
             <input id="creditCode" type="text" onChange={updateCredit} placeholder='Credit Coupon Code (Optional)' /><br></br>
 
+            <button onClick={() => checkCoupon()}>Check Coupon</button>
+            <br></br><br></br>
             <button id="login" type="button" onClick={() => createGuestUser()}>Complete Purchase as Guest </button>
           </form>
           </div> ) : 
@@ -152,6 +168,7 @@ const Paymentpage = () => {
             <p>Credit Card ending in {cardNumber.slice(-4)}</p>
             <p>Expiry Date: {cardExpiryDate}</p>
             <input id="creditCode" type="text" onChange={updateCredit} placeholder='Coupon code (credit)' /><br></br>
+            <buttpn onClick={() => checkCoupon()}>Check Coupon</buttpn>
             <button id="login" type="button" onClick={(e) => console.log(e)}>Complete Purchase as Registered User </button>
           </div> )}
           

@@ -46,7 +46,7 @@ const Checkticketpage = () => {
                 <p>Ticket Id: {retrievedTicket.id}</p>  
                 <p>Seat Number: {retrievedTicket.seat.seatNumber}</p>
                 <p>Showtime Id: {retrievedTicket.seat.showtimeId}</p>
-            </div> ) : (<p>b</p>)}
+            </div> ) : (<p></p>)}
           </div>
           <Back />
         </div>

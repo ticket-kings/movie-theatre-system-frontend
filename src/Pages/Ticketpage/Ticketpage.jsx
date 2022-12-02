@@ -29,6 +29,7 @@ const Ticketpage = () => {
             id: null,
             paymentId: null,
             seatId: seat, // need seatId from previous page
+            creditId: 1,
             payment: {
               id: null,
               amount: null,
@@ -63,9 +64,11 @@ const Ticketpage = () => {
             <div className="ticketpage_container">
               {
                 purchasedPayment!=undefined ? (<div>
+                <p>Ticket Id: {purchasedPayment && purchasedPayment.id}</p>
                 <p>Seat: {purchasedPayment.seat && purchasedPayment.seat.seatNumber}</p>
                 <p>Price: ${purchasedPayment.payment && purchasedPayment.payment.amount}</p>
                 <p>Purchase Date: {purchasedPayment.payment && purchasedPayment.payment.paymentDate}</p>
+                <button>Email Confirmation</button>
                   </div>) :
                   (
                     <div><p>No Ticket</p></div>

@@ -55,6 +55,8 @@ const Homepage = () => {
         <button id = "search" onClick= {() => searchMovie()} >Search for Movie</button>
         <button onClick={() => navigate("/movie")}>View all Movies</button> <br></br><br></br><br></br>
 
+        <button onClick={() => navigate("/checkticket")}>Have ticket? Check your ticket here</button>
+        <br></br><br></br>
 
         <label htmlFor="cancel" type="text"> Would you like to cancel a ticket? </label> <br></br>
         <input htmlFor="cancel" type="text" onChange={updateTicketId} placeholder="Ticket ID" /> <br></br>
