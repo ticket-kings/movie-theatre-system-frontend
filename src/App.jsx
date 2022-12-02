@@ -8,6 +8,7 @@ import Individualmoviepage from './Pages/Individualmoviepage/Individualmoviepage
 import Paymentpage from './Pages/Paymentpage/Paymentpage'
 import Searchpage from './Pages/Searchpage/Searchpage'
 import Ticketpage from './Pages/Ticketpage/Ticketpage'
+import Checkticketpage from './Pages/Checkticketpage/Checkticketpage';
 
 function App() {
 
@@ -21,7 +22,7 @@ function App() {
       <Route path="/movie/:movieId/payment" element={<Paymentpage />}></Route>
       <Route path="/ticket" element={<Ticketpage />}></Route>
       <Route path="/search" element={<Searchpage />}></Route>
-
+      <Route path="/checkticket" element={<Checkticketpage />}></Route>
     </Routes>
   )
 }
