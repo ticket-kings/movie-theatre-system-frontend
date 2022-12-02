@@ -1,8 +1,11 @@
 import React, { useState } from 'react'
+import { Navigate, useNavigate } from 'react-router-dom';
 import { Header } from '../../Components/Header/Header';
 import "./registrationpage.css";
 
 const Registrationpage = () => {
+  const navigate = useNavigate();
+
   const [name, setName] = useState("Default name");
   const [password, setPassword] = useState("Default password");
   const [verifiedPassword, setVerifiedPassword] = useState("Default password");
@@ -13,9 +16,6 @@ const Registrationpage = () => {
   const [cvv, setCvv] = useState("Default CVV");
 
   const register = async () => {
-    console.log(name);
-    console.log(password);
-    console.log(verifiedPassword);
 
     if (name == 'Default name') {
       alert("Please enter a valid name.")
@@ -62,6 +62,8 @@ const Registrationpage = () => {
         })
         .then((data) => {
           console.log(data)
+          sessionStorage.setItem("userId", data.id);
+          navigate("/");
         });
     }
   }
@@ -116,20 +118,19 @@ const Registrationpage = () => {
             <input id="address" type="text" onChange={updateAddress} placeholder='address..' /><br></br>
 
             <label htmlFor="password">Password</label><br></br>
-            <input id="password" type="text" onChange={updatePassword} placeholder='password..' /><br></br>
+            <input id="password" type="password" onChange={updatePassword} placeholder='password..' /><br></br>
 
             <label htmlFor="verifyPassword">Verify Password</label><br></br>
-            <input id="verifyPassword" type="text" onChange={updateVerifiedPassword} placeholder='verify password..' /><br></br>
+            <input id="verifyPassword" type="password" onChange={updateVerifiedPassword} placeholder='verify password..' /><br></br>
 
             <label htmlFor="cardNumber">Credit Card Number</label><br></br>
-            <input id="cardNumber" type="text" onChange={updateCard} placeholder='credit card number..' /><br></br>
+            <input id="cardNumber" type="number" onChange={updateCard} placeholder='credit card number..' /><br></br>
 
             <label htmlFor="creditCardExpire">Credit Card Expiry Date</label><br></br>
-            <input id="creditCardExpire" type="text" onChange={updateExpireDate} placeholder='dd/mm/yy' /><br></br>
+            <input id="creditCardExpire" type="number" onChange={updateExpireDate} placeholder='dd/mm/yy' /><br></br>
 
             <label htmlFor="cvv">CVV</label><br></br>
-            <input id="cvv" type="text" onChange={updateCvv} placeholder='CVV..' /><br></br>
-
+            <input id="cvv" type="number" onChange={updateCvv} placeholder='CVV..' /><br></br>
 
             <button id="login" type="button" onClick={() => register()}>Register </button>
           </form>

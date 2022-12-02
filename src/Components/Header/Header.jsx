@@ -8,15 +8,14 @@ export const Header = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false); //useToggle();
   
   const updateLogin = () => {
-    console.log(sessionStorage.getItem("userId"));
     if (sessionStorage.getItem("userId") != null && sessionStorage.getItem("userId") != "null") {
       setIsLoggedIn(true);
     }
   }
 
   useEffect(() => {
+    console.log(sessionStorage.getItem("firstName"));
     updateLogin();
-    console.log(sessionStorage.getItem("userId"));
   }, [])
 
   const handleLogout = () => {
@@ -28,7 +27,7 @@ export const Header = () => {
 
   return (
     <div className="header_container">
-      <div className="corner"> {isLoggedIn? (<p>Welcome Registered User</p>) : (<p>Welcome Guest User!</p>)} </div>
+      <div className="corner"> {isLoggedIn? (<p>Welcome Registered User ({sessionStorage.getItem("firstName")})</p>) : (<p>Welcome Guest User!</p>)} </div>
       <div className="header_logo">
         <a href="/">
           <img src={crownLogo} className="logo" alt="crown logo" />

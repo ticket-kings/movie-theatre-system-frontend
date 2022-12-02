@@ -89,7 +89,8 @@ const Paymentpage = () => {
   return (
     <div className="paymentpage_container">
       <Header />
-      {console.log(sessionStorage.getItem("seat"))}
+      {console.log("User Id",sessionStorage.getItem("userId"))}
+      {(sessionStorage.getItem("userId") == null || sessionStorage.getItem("userId") == "null") ? console.log(true) : console.log(false)}
       <div>
         <h1>Ticket Purchase</h1>
         <div className="paymentpage_container">
