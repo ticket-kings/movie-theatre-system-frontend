@@ -43,15 +43,12 @@ const Individualmoviepage = () => {
   };
 
   const chooseSeat = (seat) => {
+    sessionStorage.setItem("seat", seat.id)
     setChosenSeat(seat);
   };
 
   const navigateToPaymentPage = () => {
-    sessionStorage.setItem("seat", chosenSeat)
-    if(sessionStorage.getItem("IsLoggedIn") != "True") {
-      navigate(`/movie/`+movie.id+'/payment')
-    //navigate("/ticket");
-    }
+    navigate(`/movie/`+movie.id+'/payment')
   };
 
   return (

@@ -89,6 +89,7 @@ const Paymentpage = () => {
   return (
     <div className="paymentpage_container">
       <Header />
+      {console.log(sessionStorage.getItem("seat"))}
       <div>
         <h1>Ticket Purchase</h1>
         <div className="paymentpage_container">
