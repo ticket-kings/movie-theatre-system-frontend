@@ -65,6 +65,8 @@ const Ticketpage = () => {
               {
                 purchasedPayment!=undefined ? (<div>
                 <p>Ticket Id: {purchasedPayment && purchasedPayment.id}</p>
+                <p>Movie: {purchasedPayment.showing && purchasedPayment.showing.movie.name}</p>
+                <p>Showing time: {purchasedPayment.showing && purchasedPayment.showing.showtime.time}</p>
                 <p>Seat: {purchasedPayment.seat && purchasedPayment.seat.seatNumber}</p>
                 <p>Price: ${purchasedPayment.payment && purchasedPayment.payment.amount}</p>
                 <p>Purchase Date: {purchasedPayment.payment && purchasedPayment.payment.paymentDate}</p>

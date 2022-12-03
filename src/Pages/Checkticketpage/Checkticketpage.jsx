@@ -44,8 +44,9 @@ const Checkticketpage = () => {
             {retrievedTicket!= undefined ? (
             <div>
                 <p>Ticket Id: {retrievedTicket.id}</p>  
+                <p>Movie: {retrievedTicket.showing.movie.name}</p>
+                <p>Showing Time: {retrievedTicket.showing.showtime.time}</p>
                 <p>Seat Number: {retrievedTicket.seat.seatNumber}</p>
-                <p>Showtime Id: {retrievedTicket.seat.showtimeId}</p>
             </div> ) : (<p></p>)}
           </div>
           <Back />
