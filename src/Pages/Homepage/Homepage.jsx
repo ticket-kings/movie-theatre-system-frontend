@@ -22,6 +22,7 @@ const Homepage = () => {
         if (!response.ok) {
           throw new Error(response.status);
         } else {
+          alert("Ticket has been cancelled. Email notification and coupon code has been sent to the ticket holder.")
           return response.json();
         }
       })
