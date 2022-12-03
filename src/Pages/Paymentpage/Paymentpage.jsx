@@ -125,7 +125,9 @@ const Paymentpage = () => {
           alert(string)
           sessionStorage.setItem("couponId", creditCode);
           sessionStorage.setItem("creditAmount", data.amount);
-          window.location.reload();
+          if(loggedIn==true) {
+            window.location.reload();
+          }
         } else {
           alert("Coupon is invalid.")
         }
@@ -160,7 +162,7 @@ const Paymentpage = () => {
             <label htmlFor="creditCode">Coupon Code</label><br></br>
             <input id="creditCode" type="text" onChange={updateCredit} placeholder='Credit Coupon Code (Optional)' /><br></br>
 
-            <button onClick={() => checkCoupon()}>Check Coupon</button>
+            <button onClick={() => checkCoupon()}>Submit Coupon</button>
             <br></br><br></br>
             <button id="login" type="button" onClick={() => createGuestUser()}>Complete Purchase as Guest </button>
           </form>
@@ -171,7 +173,7 @@ const Paymentpage = () => {
             <p>Credit Card ending in {cardNumber.slice(-4)}</p>
             <p>Expiry Date: {cardExpiryDate}</p>
             <input id="couponId" type="text" onChange={updateCredit} placeholder='Coupon code (credit)' /><br></br>
-            {sessionStorage.getItem("couponId")=="null"? <button onClick={() => checkCoupon()}>Check Coupon</button> : <p>Coupon Applied! {sessionStorage.getItem("creditAmount")}</p>}
+            {sessionStorage.getItem("couponId")=="null"? <button onClick={() => checkCoupon()}>Submit Coupon</button> : <p>Coupon Applied! {sessionStorage.getItem("creditAmount")}</p>}
             
             <button id="login" type="button" onClick={() => navigate('/ticket')}>Complete Purchase as Registered User </button>
           </div> )}
