@@ -8,6 +8,7 @@ const Paymentpage = () => {
   const [name, setName] = useState("Default name");
   //const [password, setPassword] = useState("Default password");
   const [creditCode, setCreditCode] = useState();
+  const [creditAmount, setCreditAmount] = useState(0);
   const [email, setEmail] = useState("Default Email");
   const [cardNumber, setCardNumber] = useState("Default Credit Card Number");
   const [cardExpiryDate, setExpiryDate] = useState("Default Credit Card Expire Date");
@@ -120,12 +121,14 @@ const Paymentpage = () => {
       .then((data) => {
         console.log(data);
         if (data.status != 400) {
-          var string = "Coupon is valid. Amount is " + data.amount;
+          var string = "The coupon is valid. Amount is $" + data.amount;
           alert(string)
+          sessionStorage.setItem("couponId", creditCode);
+          sessionStorage.setItem("creditAmount", data.amount);
+          window.location.reload();
         } else {
           alert("Coupon is invalid.")
         }
-
       })
       .catch((error) => console.log(error));
   }
@@ -167,9 +170,10 @@ const Paymentpage = () => {
             <h2>You already have a billing within our system</h2>
             <p>Credit Card ending in {cardNumber.slice(-4)}</p>
             <p>Expiry Date: {cardExpiryDate}</p>
-            <input id="creditCode" type="text" onChange={updateCredit} placeholder='Coupon code (credit)' /><br></br>
-            <buttpn onClick={() => checkCoupon()}>Check Coupon</buttpn>
-            <button id="login" type="button" onClick={(e) => console.log(e)}>Complete Purchase as Registered User </button>
+            <input id="couponId" type="text" onChange={updateCredit} placeholder='Coupon code (credit)' /><br></br>
+            {sessionStorage.getItem("couponId")=="null"? <button onClick={() => checkCoupon()}>Check Coupon</button> : <p>Coupon Applied! {sessionStorage.getItem("creditAmount")}</p>}
+            
+            <button id="login" type="button" onClick={() => navigate('/ticket')}>Complete Purchase as Registered User </button>
           </div> )}
           
           <Back />

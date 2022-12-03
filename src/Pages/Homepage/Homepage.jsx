@@ -12,7 +12,7 @@ const Homepage = () => {
   const [movie, setMovie] = useState("Default Movie");
 
   const cancelTicket = async () => {
-    let response = await fetch('http://localhost:8080/api/v1/ticket'+ticketId, {
+    let response = await fetch('http://localhost:8080/api/v1/ticket/'+ticketId, {
       method: 'DELETE',
       headers: {
         'Content-type': 'application/json; charset=UTF-8',
@@ -24,6 +24,9 @@ const Homepage = () => {
         } else {
           return response.json();
         }
+      })
+      .then((data) => {
+        console.log(data)
       })
       .catch((error) => {
         alert("Invalid ticket number")

@@ -29,7 +29,7 @@ const Ticketpage = () => {
             id: null,
             paymentId: null,
             seatId: seat, // need seatId from previous page
-            creditId: 1,
+            creditId: sessionStorage.getItem("couponId"),
             payment: {
               id: null,
               amount: null,
