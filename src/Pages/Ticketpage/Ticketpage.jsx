@@ -34,10 +34,10 @@ const Ticketpage = () => {
               id: null,
               amount: null,
               paymentDate: null,
-              cardId: 5
+              cardId: 5 // Change
             },
             credit: {
-              code: null
+              code: null // Change
             },
             seat: null
           }),
@@ -53,7 +53,9 @@ const Ticketpage = () => {
             console.log(data)
             if (data.status != 400) {
               setPurchasedPayment(data);
+              alert("Email confirmation has been sent!")
             } else {
+              alert("Error in creating the ticket...")
               navigate("/");
             }
           });
@@ -74,10 +76,9 @@ const Ticketpage = () => {
                 <p>Seat: {purchasedPayment.seat && purchasedPayment.seat.seatNumber}</p>
                 <p>Price: ${purchasedPayment.payment && purchasedPayment.payment.amount}</p>
                 <p>Purchase Date: {purchasedPayment.payment && purchasedPayment.payment.paymentDate}</p>
-                <button>Email Confirmation</button>
                   </div>) :
                   (
-                    <div><p>No Ticket</p></div>
+                    <div><p>Loading ticket information... please wait</p></div>
                   )
               }
               <Back />
