@@ -29,12 +29,15 @@ const Ticketpage = () => {
             id: null,
             paymentId: null,
             seatId: seat, // need seatId from previous page
-            creditId: sessionStorage.getItem("couponId"),
+            creditId: null,
             payment: {
               id: null,
               amount: null,
               paymentDate: null,
-              cardId: cardId
+              cardId: 5
+            },
+            credit: {
+              code: null
             },
             seat: null
           }),
@@ -61,6 +64,7 @@ const Ticketpage = () => {
           <Header />
           <div>
             <h1>Ticket</h1>
+            {console.log('cardId',sessionStorage.getItem("cardId"))}
             <div className="ticketpage_container">
               {
                 purchasedPayment!=undefined ? (<div>

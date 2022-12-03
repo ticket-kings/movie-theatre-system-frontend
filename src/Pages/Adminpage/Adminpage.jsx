@@ -29,12 +29,12 @@ const Adminpage = () => {
           </div>
         ) : (
           <div>
-            <input placeholder="name" />
-            <button>Add a Movie</button>
+            <input placeholder="movieId" />
+            <button>Release movie to Register Users Movie</button>
             <br></br>
             <br></br>
             <input placeholder="movieId" />
-            <button>Remove a Movie</button>
+            <button>Release a Movie to All Users (With Announcement)</button>
             <br></br>
             <br></br>
             <input placeholder="name" />

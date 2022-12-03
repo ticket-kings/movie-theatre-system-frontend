@@ -54,7 +54,7 @@ const Individualmoviepage = () => {
   };
 
   const navigateToPaymentPage = () => {
-    sessionStorage.setItem("couponId", null);
+    sessionStorage.setItem("creditCode", null);
     if (chosenSeat.id == undefined) {
       window.alert("Please choose a seat");
     } else {

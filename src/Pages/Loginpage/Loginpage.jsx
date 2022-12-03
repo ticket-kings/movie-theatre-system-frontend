@@ -37,6 +37,7 @@ const Loginpage = () => {
       console.log(data)
       sessionStorage.setItem("userId", data.id);
       sessionStorage.setItem("firstName", data.name);
+      window.location.reload();
     })
     .catch((error) => {
       alert(error)

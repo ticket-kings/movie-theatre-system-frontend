@@ -84,6 +84,7 @@ const Paymentpage = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
+        sessionStorage.setItem("cardId", data.card.cardId);
         setCardNumber(data.card.cardNumber);
         setExpiryDate(data.card.expiryDate);
         setCvv(data.card.cvv);
@@ -123,7 +124,7 @@ const Paymentpage = () => {
         if (data.status != 400) {
           var string = "The coupon is valid. Amount is $" + data.amount;
           alert(string)
-          sessionStorage.setItem("couponId", creditCode);
+          sessionStorage.setItem("creditCode", creditCode);
           sessionStorage.setItem("creditAmount", data.amount);
           if(loggedIn==true) {
             window.location.reload();
