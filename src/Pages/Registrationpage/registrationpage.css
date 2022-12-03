@@ -1,12 +1,14 @@
-.registration > button {
+.registration > form > button {
+    padding: 0.5rem;
     margin: 0.5rem;
     border: 1px solid rgb(163, 163, 173);
+    border-radius: 3px;
     color: black;
     background: beige;
 }
 
 .registration > form > input {
-    width: 50%;
+    width: 30%;
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
@@ -14,8 +16,6 @@
     border-radius: 4px;
     box-sizing: border-box;
 }
-
-
 
 /* div {
     border-radius: 5px;

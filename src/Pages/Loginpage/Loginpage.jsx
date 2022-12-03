@@ -57,8 +57,10 @@ const Loginpage = () => {
       <div>
         <h1>Login</h1>
         <div className="login">
-          <p>Please login if you are a registered user</p>
+          <p>Please login if you are a registered user:</p>
+          <label htmlFor="email">Email Address</label><br></br>
           <input id="email" type="user" onChange={updateEmail} placeholder='Email' />
+          <label htmlFor="password">Password</label><br></br>
           <input id="password" type="password" onChange={updatePassword} placeholder='Password' />
           <button id="login" type="button" onClick={() => handleLogin()} >Login</button>
         </div>

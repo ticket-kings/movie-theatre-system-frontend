@@ -9,6 +9,7 @@ import Paymentpage from './Pages/Paymentpage/Paymentpage'
 import Searchpage from './Pages/Searchpage/Searchpage'
 import Ticketpage from './Pages/Ticketpage/Ticketpage'
 import Checkticketpage from './Pages/Checkticketpage/Checkticketpage';
+import Adminpage from './Pages/Adminpage/Adminpage';
 
 function App() {
 
@@ -23,6 +24,7 @@ function App() {
       <Route path="/ticket" element={<Ticketpage />}></Route>
       <Route path="/search" element={<Searchpage />}></Route>
       <Route path="/checkticket" element={<Checkticketpage />}></Route>
+      <Route path="/admin" element={<Adminpage />}></Route>
     </Routes>
   )
 }
