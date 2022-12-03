@@ -64,7 +64,7 @@ const Registrationpage = () => {
           if (!response.ok) {
             throw new Error("Email address is already in use.")
           } else {
-            alert("Congratulations " + name + "! You are now a registered user!")
+            alert("Congratulations " + name + "! You are now a registered user! Email notification with your account information has been sent.")
             return response.json()
           }
         }).catch((error) => {
