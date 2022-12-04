@@ -4,18 +4,18 @@ import { Movie } from "../../Components/Movie/Movie";
 import { Back } from "../../Components/Back/Back";
 import "./searchpage.css";
 
-// const showtimes = () => {
-//   var mylist = document.getElementById("myList");
-//   document.getElementById("favourite").value =
-//     mylist.options[mylist.selectedIndex].text;
-// };
-
-// Page for Individual Movies
+/**
+ * Searchpage shows movies that the user has searched for
+ * @returns div containing list of searched movies
+ */
 const Searchpage = () => {
   const [movies, setMovies] = useState([]);
   
   let searchedMovie = sessionStorage.getItem("searchedMovie")
 
+  /**
+   * Fetch data of searched movies
+   */
   const fetchData = async () => {
     await fetch(`http://localhost:8080/api/v1/movie/search?name=`+searchedMovie)
       .then((res) => res.json())
@@ -23,6 +23,9 @@ const Searchpage = () => {
       .catch((error) => console.log(error));
   };
 
+  /**
+   * useEffect fetches searched movie data on page load
+   */
   useEffect(() => {
     fetchData();
   }, []);
@@ -35,9 +38,12 @@ const Searchpage = () => {
           <h1>Movie</h1>
           <label>List of movies:</label>
           <div>
-            {movies && movies.map((movie, index) => (
-              <Movie movie={movie} key={index} />
-            ))}
+          {movies &&
+              movies.map((movie, index) => (
+                <div key={index}>
+                  {(movie.isReleased==false && sessionStorage.getItem("userId") == null) ? ( <div></div> ) : <Movie movie={movie}  />}
+                </div>
+              ))}
           </div>
           <Back />
         </div>

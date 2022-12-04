@@ -139,6 +139,7 @@ const Paymentpage = () => {
    * Function is called when user inputs a coupon code and clicks submits coupon.
    * This will first send a GET request to the server backend to check if the coupon is valid.
    * If it is valid, then it will apply the coupon by setting it to a sessionStorage item.
+   * If the coupon code does not exist or it is expired, then it will display an error message.
    * @param {*} e 
    */
   const checkCoupon = async (e) => {
@@ -147,7 +148,7 @@ const Paymentpage = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        if (data.status != 400) {
+        if (data.status != 400 && data.expired != true) {
           var string = "The coupon is valid. Amount is $" + data.amount;
           alert(string);
           sessionStorage.setItem("creditCode", creditCode);

@@ -4,6 +4,10 @@ import { Back } from "../../Components/Back/Back";
 import "./ticketpage.css";
 import { Navigate, useNavigate } from 'react-router-dom';
 
+/**
+ * Ticketpage will create and display the ticket for the user after purchase
+ * @returns 
+ */
 const Ticketpage = () => {
     const navigate = useNavigate();
 
@@ -12,10 +16,14 @@ const Ticketpage = () => {
 
     const [purchasedPayment, setPurchasedPayment] = useState();
 
-    const runOnce = useRef(false);
+    // useRef hook to preserve values between renders. Prevent multiple function calls of createTicket()
+    const runOnce = useRef(false); 
 
+    /**
+     * useEffect will call createTicket() on page load once 
+     */
     useEffect(() => {
-      if (runOnce.current) return;
+      if (runOnce.current) return; 
       createTicket();
       return () => (runOnce.current = true);
     })

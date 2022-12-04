@@ -4,27 +4,40 @@ import "./header.css";
 import { useNavigate } from "react-router-dom";
 import crownLogo from "../../Assets/crownlogowhite.jpg";
 
+/**
+ * Header displays the log-in state and contains the login/logout and registration button
+ * @returns Header
+ */
 export const Header = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false); //useToggle();
+  const navigate = useNavigate();
   
+  /**
+   * Check if user is logged in given the sessionStorage ite,
+   */
   const updateLogin = () => {
     if (sessionStorage.getItem("userId") != null) {
       setIsLoggedIn(true);
     }
   }
 
+  /**
+   * useEffect calls the updateLogin function() on page render
+   */
   useEffect(() => {
     console.log("User Id:",sessionStorage.getItem("userId"));
     updateLogin();
   }, [])
 
+  /**
+   * Function is called when the logout button is clicked. 
+   * Will log the user out by removing the associated sessionStorage item.
+   */
   const handleLogout = () => {
     sessionStorage.removeItem("userId");
     setIsLoggedIn(false);
     navigate("/")
   }
-
-  const navigate = useNavigate();
 
   return (
     <div className="header_container">

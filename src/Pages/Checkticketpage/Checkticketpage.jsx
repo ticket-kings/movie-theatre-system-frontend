@@ -3,12 +3,19 @@ import { Header } from "../../Components/Header/Header";
 import { Back } from "../../Components/Back/Back";
 import "./checkticketpage.css";
 
+/**
+ * Checkticketpage is for a customer to check their ticket information using the ticketId
+ * @returns div containing page to check ticket information
+ */
 const Checkticketpage = () => {
 
   const [ticketId, setTicketId] = useState();
 
   const [retrievedTicket, setRetrievedTicket] = useState();
 
+  /**
+   * Function to handle empty input
+   */
   const handleCheck = () => {
     if (ticketId == undefined) {
         alert("Please enter a valid ticket number")
@@ -17,6 +24,9 @@ const Checkticketpage = () => {
     }
   }
 
+  /**
+   * Fetch information about specific ticket given the ticketId
+   */
   const fetchTicket = async () => {
     await fetch(`http://localhost:8080/api/v1/ticket/${ticketId}`)
       .then((res) => res.json())

@@ -2,11 +2,19 @@ import React, { useState } from "react";
 import { Header } from "../../Components/Header/Header";
 import "./adminpage.css";
 
+/**
+ * Adminpage that allows an admin to create a movie, release a movie, and create a registered user
+ * @returns div that contains admin functionalities
+ */
 const Adminpage = () => {
   // Authentication Part of Adminpage
+
   const [adminPass, setAdminPass] = useState();
   const [authenticate, setAuthenticate] = useState(false);
 
+  /**
+   * Secret password to unlock Admin functionalties
+   */
   const authenticateAdmin = () => {
     if (adminPass == "614") {
       setAuthenticate(true);
@@ -14,6 +22,7 @@ const Adminpage = () => {
   };
 
   // Functional Part of Adminpage
+
   const [createMovieValues, setCreateMovieValues] = useState({
     name: "",
     imageUrl: "",
@@ -58,7 +67,12 @@ const Adminpage = () => {
     });
   };
 
-  // Functions to send requests
+  // Functions to send requests to server
+
+  /**
+   * Create a movie
+   * @returns null when any input is blank
+   */
   const createMovie = async () => {
     console.log(createMovieValues);
     if (
@@ -83,6 +97,10 @@ const Adminpage = () => {
     window.alert("Movie Created");
   };
 
+  /**
+   * Releases a movie to all Guest Users
+   * @returns null when the input is blank
+   */
   const releaseMovie = async () => {
     if (!releaseMovieValues.movieId) {
       window.alert("Please fill in all inputs");
@@ -103,6 +121,10 @@ const Adminpage = () => {
     window.alert("Movie Released");
   };
 
+  /**
+   * Create a Registered User
+   * @returns null if any input is blank
+   */
   const addRegisteredUser = async () => {
     console.log(addRegisteredUserValues);
     if (
