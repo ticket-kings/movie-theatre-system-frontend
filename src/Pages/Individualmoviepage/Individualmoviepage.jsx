@@ -6,6 +6,12 @@ import seatReservedIcon from "../../Assets/seatinversetaken.png";
 import { Back } from "../../Components/Back/Back";
 import "./individualmoviepage.css";
 
+/**
+ * Individual movie page after clicking on the movie from the movie list.
+ * Contains information about the movie, and allows the user to purchase tickets.
+ * User will need to pick the showtime, pick the seats, then click on the button to go next.
+ * @returns div containing individual movie information and showtime/seat choosing
+ */
 const Individualmoviepage = () => {
   const [seats, setSeats] = useState([]);
   const [movie, setMovie] = useState({});
@@ -19,6 +25,9 @@ const Individualmoviepage = () => {
 
   const backend_endpoint = "http://localhost:8080";
 
+  /**
+   * Function to fetch data of the movie
+   */
   const fetchMovie = async () => {
     await fetch(`${backend_endpoint}/api/v1/movie/${params.movieId}`)
       .then((res) => res.json())
@@ -26,6 +35,9 @@ const Individualmoviepage = () => {
       .catch((error) => console.log(error));
   };
 
+  /**
+   * Function to fetch the showtime of the movie
+   */
   const fetchShowtimes = async () => {
     await fetch(`${backend_endpoint}/api/v1/movie/${params.movieId}/showtimes`)
       .then((res) => res.json())
@@ -33,32 +45,55 @@ const Individualmoviepage = () => {
       .catch((error) => console.log(error));
   };
 
+  /**
+   * useEffect will fetch the movie and showtime data on page load
+   */
   useEffect(() => {
     fetchMovie();
     fetchShowtimes();
   }, []);
 
+  /**
+   * Function will be called when user picks a showtime.
+   * This will allow for the showtime to be displayed, and
+   * also display the seats for the given showtime
+   * @param {*} index 
+   */
   const chooseShowtime = (index) => {
     setChosenShowtime(showtime[index].id);
     setSeats(showtime[index].seats);
   };
 
+  /**
+   * This function will be called when user click on an available seat.
+   * This will store the seatId into storage for use in the payment page.
+   * It will also set the seat variable to the seat object, for use in displaying info.
+   * @param {*} seat 
+   */
   const chooseSeat = (seat) => {
     sessionStorage.setItem("seat", seat.id)
     setChosenSeat(seat);
   };
 
+  /**
+   * Function will be called when the user clicks on an unavailable seat.
+   * Will display a message that the seat is taken.
+   * @param {*} seat 
+   */
   const chooseTakenSeat = (seat) => {
     let string = "Seat " + seat.seatNumber + " is reserved! Please choose another."
     window.alert(string)
   };
 
+  /**
+   * This function is called when the user clicks on the button to proceed after choosing seats.
+   */
   const navigateToPaymentPage = () => {
-    sessionStorage.removeItem("creditCode");
+    sessionStorage.removeItem("creditCode"); // Remove the creditCode from sessionStorage
     if (chosenSeat.id == undefined) {
       window.alert("Please choose a seat");
     } else {
-      navigate(`/movie/`+movie.id+'/payment')
+      navigate(`/movie/`+movie.id+'/payment') // Navigate to payment page
     }
   };
 
@@ -140,7 +175,7 @@ const Individualmoviepage = () => {
         )}
       </div>
       <div className="addtocart_button">
-        <button onClick={() => navigateToPaymentPage()}>Get Tickets</button>
+        {chosenSeat.id == undefined ? null : (<button onClick={() => navigateToPaymentPage()}>Get Tickets</button>)}
       </div>
       <Back />
     </div>

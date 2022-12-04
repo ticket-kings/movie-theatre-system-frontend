@@ -4,13 +4,19 @@ import "./loginpage.css";
 
 import { useNavigate } from "react-router-dom";
 
-
-
+/**
+ * Loginpage for users who have already signed up as a Registered User
+ * @returns div containing login inputs
+ */
 const Loginpage = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("Default email");
   const [password, setPassword] = useState("Default password");
 
+  /**
+   * Function is called when the login button is clicked.
+   * Will handle the error checking before calling the actual login function.
+   */
   const handleLogin = () => {
     if (email == 'Default email') {
       alert("Please enter a valid email.")
@@ -21,6 +27,11 @@ const Loginpage = () => {
     }
   }
 
+  /**
+   * Login function which is called inside of handleLogin().
+   * This will send a GET request to the specific URL and retrieve a response from the server.
+   * Will log the user in if the credentials are correct; otherwise, an error will be sent back.
+   */
   const login = async() => {
     let response = await fetch('http://localhost:8080/api/v1/user/registered/login?email=' + email + '&password=' + password)
     .then((response) => {
@@ -35,8 +46,8 @@ const Loginpage = () => {
     })
     .then((data) => {
       console.log(data)
-      sessionStorage.setItem("userId", data.id);
-      sessionStorage.setItem("firstName", data.name);
+      sessionStorage.setItem("userId", data.id); // Add userId to sessionStorage, which is used for many purposes
+      sessionStorage.setItem("firstName", data.name); // Storages name in sessionStorage for display in Header
       window.location.reload();
     })
     .catch((error) => {
@@ -44,6 +55,7 @@ const Loginpage = () => {
     });
   }
 
+  // onChange event handlers for inputs
   const updateEmail = (e) => {
     setEmail(e.target.value);
   }

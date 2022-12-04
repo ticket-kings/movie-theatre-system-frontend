@@ -3,6 +3,11 @@ import { Navigate, useNavigate } from 'react-router-dom';
 import { Header } from '../../Components/Header/Header';
 import "./registrationpage.css";
 
+/**
+ * Registrationpage is for new customers who want to create a Registered User.
+ * They are required to fill out all information including billing information, since there is an annual fee.
+ * @returns div containing inputs to create a Registered User
+ */
 const Registrationpage = () => {
   const navigate = useNavigate();
 
@@ -15,6 +20,9 @@ const Registrationpage = () => {
   const [cardExpire, setExpire] = useState("Default Credit Card Expire Date");
   const [cvv, setCvv] = useState("Default CVV");
 
+  /**
+   * Handles input error checking before calling the actual register() function
+   */
   const handleRegister = () => {
     if (name == 'Default name') {
       alert("Please enter a valid name.")
@@ -37,6 +45,9 @@ const Registrationpage = () => {
     }
   }
 
+  /**
+   * Register function will send a POST create to the server to create a new Registered User
+   */
   const register = async () => {
     let response = await fetch('http://localhost:8080/api/v1/user/registered', {
         method: 'POST',
@@ -72,11 +83,12 @@ const Registrationpage = () => {
         })
         .then((data) => {
           console.log(data)
-          sessionStorage.setItem("userId", data.id);
+          sessionStorage.setItem("userId", data.id); // Sets userId sessionStorage, which immediately sets user as logged in
           navigate("/");
         });
   }
 
+  // onChange event handlers for inputs
   const updateName = (e) => {
     setName(e.target.value);
   }

@@ -1,16 +1,23 @@
 import React, { useState } from "react";
-
-import "./homepage.css";
-
 import { useNavigate } from "react-router-dom";
 import { Header } from "../../Components/Header/Header";
-import { Movie } from "../../Components/Movie/Movie";
+import "./homepage.css";
 
+
+/**
+ * Homepage for the Movie Theatre. 
+ * Users can search for a movie, view all movies, navigate to a check-ticket page, and cancel a ticket.
+ * Visible admin button located in the bottom left for marking purposes
+ * @returns homepage div
+ */
 const Homepage = () => {
   const navigate = useNavigate();
   const [ticketId, setTicketId] = useState("Default TicketId");
   const [movie, setMovie] = useState("Default Movie");
 
+  /**
+   * Function to cancel a ticket given a ticketId taken from the input
+   */
   const cancelTicket = async () => {
     let response = await fetch(
       "http://localhost:8080/api/v1/ticket/" + ticketId,
@@ -39,11 +46,15 @@ const Homepage = () => {
       });
   };
 
+  /**
+   * Function to navigate to the searchMovie page
+   */
   const searchMovie = () => {
     sessionStorage.setItem("searchedMovie", movie);
     navigate("/search");
   };
 
+  // onChange event handlers for inputs
   const updateTicketId = (e) => {
     setTicketId(e.target.value);
   };
@@ -54,9 +65,9 @@ const Homepage = () => {
 
   return (
     <div className="home">
-      <Header />
+      <Header /> 
       <div className="home_container">
-        <h1>Ticket Kings Movie Theatre</h1>
+        <h1>Ticket Kings Movie Theatre</h1> 
         <h2> Book a movie now! </h2>
         <input type="searchMovie" onChange={updateMovie} placeholder="Movie" />
         <button id="search" onClick={() => searchMovie()}>
