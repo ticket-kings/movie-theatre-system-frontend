@@ -35,9 +35,13 @@ const Moviepage = () => {
           <h1>Movie</h1>
           <label>List of movies:</label>
           <div>
-            {movies && movies.map((movie, index) => (
-              <Movie movie={movie} key={index} />
-            ))}
+            {movies &&
+              movies.map((movie, index) => (
+                <div key={index}>
+                  {(movie.isReleased==false && sessionStorage.getItem("userId") == null) ? ( <Movie movie={movie}  />) : <Movie movie={movie}  />}
+                 
+                </div>
+              ))}
           </div>
           <Back />
         </div>

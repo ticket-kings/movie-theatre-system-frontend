@@ -8,7 +8,7 @@ export const Header = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false); //useToggle();
   
   const updateLogin = () => {
-    if (sessionStorage.getItem("userId") != null && sessionStorage.getItem("userId") != "null") {
+    if (sessionStorage.getItem("userId") != null) {
       setIsLoggedIn(true);
     }
   }
@@ -19,7 +19,7 @@ export const Header = () => {
   }, [])
 
   const handleLogout = () => {
-    sessionStorage.setItem("userId", "null");
+    sessionStorage.removeItem("userId");
     setIsLoggedIn(false);
     navigate("/")
   }
