@@ -37,7 +37,7 @@ const Ticketpage = () => {
               cardId: 5 // Change
             },
             credit: {
-              code: null // Change
+              code: sessionStorage.getItem("creditCode")
             },
             seat: null
           }),
@@ -67,6 +67,7 @@ const Ticketpage = () => {
           <div>
             <h1>Ticket</h1>
             {console.log('cardId',sessionStorage.getItem("cardId"))}
+            {console.log('cardId',sessionStorage.getItem("creditCode"))}
             <div className="ticketpage_container">
               {
                 purchasedPayment!=undefined ? (<div>
@@ -76,12 +77,12 @@ const Ticketpage = () => {
                 <p>Seat: {purchasedPayment.seat && purchasedPayment.seat.seatNumber}</p>
                 <p>Price: ${purchasedPayment.payment && purchasedPayment.payment.amount}</p>
                 <p>Purchase Date: {purchasedPayment.payment && purchasedPayment.payment.paymentDate}</p>
+                <button onClick={() => navigate("/")}>Confirm</button>
                   </div>) :
                   (
                     <div><p>Loading ticket information... please wait</p></div>
                   )
               }
-              <Back />
             </div>
           </div>
         </div>

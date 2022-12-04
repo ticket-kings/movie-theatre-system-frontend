@@ -6,14 +6,14 @@ import { useNavigate } from 'react-router-dom';
 
 const Paymentpage = () => {
   const [name, setName] = useState("Default name");
-  //const [password, setPassword] = useState("Default password");
+
+  const [validCoupon, setValidCoupon] = useState(false);
   const [creditCode, setCreditCode] = useState();
   const [creditAmount, setCreditAmount] = useState(0);
   const [email, setEmail] = useState("Default Email");
   const [cardNumber, setCardNumber] = useState("Default Credit Card Number");
   const [cardExpiryDate, setExpiryDate] = useState("Default Credit Card Expire Date");
   const [cvv, setCvv] = useState("Default CVV");
-  //const [cardId, setCardId] = useState("Default CardId");
 
   const [loggedIn, setLoggedIn] = useState(false);
 
@@ -116,7 +116,8 @@ const Paymentpage = () => {
     setCvv(e.target.value);
   }
 
-  const checkCoupon = async () => {
+  const checkCoupon = async (e) => {
+    e.preventDefault();
     await fetch(`${backend_endpoint}/api/v1/credit/${creditCode}`)
       .then((res) => res.json())
       .then((data) => {
@@ -126,9 +127,8 @@ const Paymentpage = () => {
           alert(string)
           sessionStorage.setItem("creditCode", creditCode);
           sessionStorage.setItem("creditAmount", data.amount);
-          if(loggedIn==true) {
-            window.location.reload();
-          }
+          console.log(sessionStorage.getItem("creditCode"))
+          setValidCoupon(true);
         } else {
           alert("Coupon is invalid.")
         }
@@ -160,10 +160,10 @@ const Paymentpage = () => {
             <label htmlFor="cvv">CVV (ex. 143)</label><br></br>
             <input id="cvv" type="number" onChange={updateCvv} placeholder='CVV (3 Digits)'/><br></br>
 
-            <label htmlFor="creditCode">Coupon Code</label><br></br>
+            <label htmlFor="creditCode">Coupon Code (ex. A1B2C3)</label><br></br>
             <input id="creditCode" type="text" onChange={updateCredit} placeholder='Credit Coupon Code (Optional)' /><br></br>
 
-            <button onClick={() => checkCoupon()}>Submit Coupon</button>
+            {validCoupon==false ? (<button onClick={(e) => checkCoupon(e)}>Submit Coupon</button>) : (<p>Coupon {sessionStorage.getItem("creditCode")} applied! {sessionStorage.getItem("creditAmount")}</p>)}
             <br></br><br></br>
             <button id="login" type="button" onClick={() => createGuestUser()}>Complete Purchase as Guest </button>
           </form>
@@ -173,8 +173,10 @@ const Paymentpage = () => {
             <h2>You already have a billing within our system</h2>
             <p>Credit Card ending in {cardNumber.slice(-4)}</p>
             <p>Expiry Date: {cardExpiryDate}</p>
+            <label>Coupon Code (ex. A1B2C3)</label>
+            <br></br>
             <input id="couponId" type="text" onChange={updateCredit} placeholder='Coupon code (credit)' /><br></br>
-            {sessionStorage.getItem("couponId")=="null"? <button onClick={() => checkCoupon()}>Submit Coupon</button> : <p>Coupon Applied! {sessionStorage.getItem("creditAmount")}</p>}
+            {validCoupon==false ? (<button onClick={(e) => checkCoupon(e)}>Submit Coupon</button>) : (<p>Coupon {sessionStorage.getItem("creditCode")} applied! {sessionStorage.getItem("creditAmount")}</p>)}
             
             <button id="login" type="button" onClick={() => navigate('/ticket')}>Complete Purchase as Registered User </button>
           </div> )}
