@@ -84,7 +84,7 @@ const Paymentpage = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        sessionStorage.setItem("cardId", data.card.cardId);
+        sessionStorage.setItem("cardId", data.cardId);
         setCardNumber(data.card.cardNumber);
         setExpiryDate(data.card.expiryDate);
         setCvv(data.card.cvv);
@@ -180,7 +180,6 @@ const Paymentpage = () => {
             
             <button id="login" type="button" onClick={() => navigate('/ticket')}>Complete Purchase as Registered User </button>
           </div> )}
-          
           <Back />
         </div>
       </div>

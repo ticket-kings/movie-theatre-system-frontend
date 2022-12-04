@@ -38,7 +38,7 @@ const Moviepage = () => {
             {movies &&
               movies.map((movie, index) => (
                 <div key={index}>
-                  {(movie.isReleased==false && sessionStorage.getItem("userId") == null) ? ( <Movie movie={movie}  />) : <Movie movie={movie}  />}
+                  {(movie.isReleased==false && sessionStorage.getItem("userId") == null) ? ( <div></div> ) : <Movie movie={movie}  />}
                  
                 </div>
               ))}

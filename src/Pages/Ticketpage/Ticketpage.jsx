@@ -34,7 +34,7 @@ const Ticketpage = () => {
               id: null,
               amount: null,
               paymentDate: null,
-              cardId: 5 // Change
+              cardId: parseInt(sessionStorage.getItem("cardId"))
             },
             credit: {
               code: sessionStorage.getItem("creditCode")
@@ -67,7 +67,6 @@ const Ticketpage = () => {
           <div>
             <h1>Ticket</h1>
             {console.log('cardId',sessionStorage.getItem("cardId"))}
-            {console.log('cardId',sessionStorage.getItem("creditCode"))}
             <div className="ticketpage_container">
               {
                 purchasedPayment!=undefined ? (<div>

@@ -147,6 +147,7 @@ const Adminpage = () => {
           </div>
         ) : (
           <div>
+            <p>Please fill in ALL information correctly and click on the button once. Be patient until a pop-up alert shows up.</p>
             <div>
               <form>
                 <input
@@ -210,17 +211,17 @@ const Adminpage = () => {
                 onChange={handleAddRegisteredUserChange}
               />
               <input
-                placeholder="card.cardNumber"
+                placeholder="cardNumber"
                 name="card[cardNumber]"
                 onChange={handleAddRegisteredUserChange}
               />
               <input
-                placeholder="card.expiryDate"
+                placeholder="expiryDate"
                 name="card[expiryDate]"
                 onChange={handleAddRegisteredUserChange}
               />
               <input
-                placeholder="card.cvv"
+                placeholder="cvv"
                 name="card[cvv]"
                 onChange={handleAddRegisteredUserChange}
               />
@@ -238,13 +239,6 @@ const Adminpage = () => {
                 Add a Registered User
               </button>
             </div>
-            <br></br>
-            <br></br>
-            {/* <div>
-              <input placeholder="userId" />
-              <button>Remove a Registered User</button>
-            </div> */}
-            <br></br>
           </div>
         )}
       </div>
