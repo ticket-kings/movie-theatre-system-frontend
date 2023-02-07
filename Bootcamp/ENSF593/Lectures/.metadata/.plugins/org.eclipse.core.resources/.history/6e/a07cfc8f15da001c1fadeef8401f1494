@@ -1,0 +1,17 @@
+# Days in Month report
+Author: Bill Yu
+
+## UML class diagram
+
+![](MonthJFrame UML.png)
+
+## Execution and Testing
+
+**Testing `Days` class**
+![](DaysTester Output.png)
+
+**Days in Month GUI Usage**
+![](MonthJFrame Output.png)
+
+Simply run the MonthJFrame program and enter the desired month as a number into the text box.
+Press enter, and the result will show below. Before entering a new month be sure to clear the text box.

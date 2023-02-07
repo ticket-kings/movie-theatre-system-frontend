@@ -1,0 +1,61 @@
+/**
+ * Class representing command-line interface to compute yearly and daily compounded certificate of deposit.
+ * Uses the KeyboardReader class to input and output data. Also uses the BankCD class to calculate values.
+ *  
+ * @author Bill Yu
+ *
+ */
+public class BankCDApp {
+	
+	private BankCD bank;
+	private KeyboardReader reader;
+	
+	/**
+	 * Constructor method for BankCDApp creates a new instance of KeyboardReader called reader
+	 */
+	public BankCDApp() {
+		
+		reader = new KeyboardReader();
+	}
+	
+	/**
+	 * Function which acts as an user interface, outputting prompts and assigning variables using methods from the KeyboardReader class
+	 * Creates an instance of BankCD, and uses its methods to calculate maturity values
+	 */
+	public void run() {
+		
+		reader.display("Compare daily and annual compounding for a Bank CD.\n");
+		
+		reader.prompt(" Input CD initial principal, e.g.  1000.55 > ");
+		double p = reader.getKeyboardDouble();
+		
+		reader.prompt(" Input CD intertest rate, e.g.  6.5 > ");
+		double r = reader.getKeyboardDouble();
+		
+		reader.prompt(" Input the number of years to maturity, e.g.  10.5 > ");
+		double y = reader.getKeyboardDouble();
+		
+		reader.display("For Principal = $" + p + " Rate= " + r + "% Years= " + y + "\n");
+		
+		bank = new BankCD(p, r, y);
+		
+		double matyear = bank.calcYearly();
+		reader.display(" The maturity value compounded yearly is $ %.2f \n", matyear);
+		
+		double matday = bank.calcDaily();
+		reader.display(" The maturity value compounded daily is $ %.2f", matday);
+	}
+
+	/**
+	 * Main class creates an instance of the BankCDApp and calls the run method
+	 * @param args user inputed string from the terminal
+	 */
+	public static void main(String[] args) {
+		
+		BankCDApp app = new BankCDApp();
+		app.run();
+		
+
+	}
+
+}

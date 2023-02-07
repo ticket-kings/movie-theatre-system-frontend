@@ -1,0 +1,14 @@
+INDEX VERSION 1.131+/Users/billyu/Desktop/ENSF593/Lectures/.metadata/.plugins/org.eclipse.jdt.core
+3981961839.index
+4028300369.index
+288202976.index
+4165862869.index
+2847793794.index
+2284122458.index
+2403939651.index
+1714065526.index
+409909306.index
+1865797976.index
+3927879410.index
+1233925011.index
+3550372066.index

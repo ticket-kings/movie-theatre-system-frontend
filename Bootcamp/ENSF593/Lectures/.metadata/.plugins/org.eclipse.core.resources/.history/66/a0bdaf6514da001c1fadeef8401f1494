@@ -1,0 +1,14 @@
+# Days in Month report
+Author: Bill Yu
+
+## UML class diagram
+
+![](MonthJFrame UML.png)
+
+## Execution and Testing
+
+**Testing `Days` class**
+![](DaysTester Ouput.png)
+
+**Days in Month GUI Usage**
+![](MonthJFrame Ouput.png)

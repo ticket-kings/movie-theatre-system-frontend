@@ -1,0 +1,48 @@
+/**
+ * Class representing a certificate of deposit. Has a constructor which initializes variables principle, rate and years. Also contains function to return the maturity value
+ * for both yearly and daily compounding.
+ * 
+ * @author Bill Yu
+ *
+ */
+
+public class BankCD {
+
+	double principle, rate, years;
+	
+	/**
+	 * Constructor, initializes variables principle, rate, and years
+	 * @param p principle 
+	 * @param r rate
+	 * @param y years
+	 */
+	public BankCD(double p, double r, double y) {
+		
+		principle = p;
+		rate = r;
+		years = y;
+		
+	}
+	
+	/**
+	 * Calculates the maturity value compounded yearly, using the power function from the Math library
+	 * @return yearly The maturity value compounded yearly
+	 */
+	public double calcYearly() {
+		
+		double yearly = (principle * Math.pow(1 + rate, years));
+		return yearly;
+		
+	}
+	
+	/**
+	 * Calculates the maturity value compounded daily, using the power function from the Math library
+	 * @return daily The maturity value compounded daily
+	 */
+	public double calcDaily() {
+		
+		double daily = (principle * Math.pow(1 + rate/365, 365*years));
+		return daily;
+		
+	}
+}

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;HelloWorld2/rectangle_uml&apos; to &apos;rectangle_uml.txt&apos;" description="Rename resource &apos;rectangle_uml&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="rectangle_uml" name="rectangle_uml.txt" stamp="1651683951566" updateReferences="true"/>
+</session>

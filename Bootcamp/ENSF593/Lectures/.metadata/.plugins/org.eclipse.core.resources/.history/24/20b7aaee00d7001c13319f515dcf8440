@@ -1,0 +1,15 @@
+
+public class QuizTest {
+	
+	boolean b1 = true;
+	boolean b2 = true;
+	
+	public static void main(String args) {
+		if (b1 == true && b2 ==true) {
+			System.out.println("granted");
+		}
+		else {
+			System.out.println("denied");
+		}
+	}
+}

@@ -1,0 +1,29 @@
+
+/**
+ * A class to test the Days class.
+ * 
+ * Runs through all the months 1 - 12 and prints the number of days.
+ * 
+ * @author 
+ *
+ */
+public class DaysTester {
+
+	public static void main(String[] args) {
+		
+		int month = 1;
+		
+		while (month < 13) {
+			
+			int days;
+			days = Days.howManyDays(month);
+			
+			System.out.println("There are " + days + " days in month " + month + ".");
+			
+			month++;
+			
+		}
+
+	}
+
+}

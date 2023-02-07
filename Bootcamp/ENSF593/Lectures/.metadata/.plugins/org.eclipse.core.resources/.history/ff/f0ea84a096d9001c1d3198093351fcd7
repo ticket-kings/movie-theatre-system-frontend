@@ -1,0 +1,43 @@
+
+/**
+ * @author Bill Yu
+ * 
+ * Class: Days
+ * Computes the number of days in a given month based on an algorithm and returns it as an int
+ *
+ */
+public final class Days {
+	
+	/**
+	 * Days cannot be instantiated, has static methods only.
+	 */
+	private Days() {}
+	
+	/**
+	 * @return number of days in month as an int
+	 * @param number of month as int (1-12)
+	 */
+	public static int howManyDays(int i) {
+		
+		int month = i;
+	
+		if (month == 2) {
+			return 28;
+		}
+		else if (month < 8) {
+			if (month % 2 == 0) {
+				return 30;
+			}
+			else
+				return 31;
+		}
+		else {
+			if (month % 2 == 0) {
+				return 31;
+			}
+			else 
+				return 30;
+		}
+	}
+
+}

@@ -1,0 +1,32 @@
+/**
+ * Class representing a certificate of deposit.
+ * 
+ * @author Bill Yu
+ *
+ */
+public class BankCD {
+
+	double principle, rate, years;
+	
+	public BankCD(double p, double r, double y) {
+		
+		principle = p;
+		rate = r;
+		years = y;
+		
+	}
+	
+	public double calcYearly() {
+		
+		double yearly = (principle * Math.pow(1 + rate, years));
+		return yearly;
+		
+	}
+	
+	public double calcDaily() {
+		
+		double daily = (principle * Math.pow(1 + rate/365, 365*years));
+		return daily;
+		
+	}
+}

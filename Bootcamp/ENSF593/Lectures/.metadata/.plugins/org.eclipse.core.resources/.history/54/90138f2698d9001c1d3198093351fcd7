@@ -1,0 +1,86 @@
+import javax.swing.*; 
+import java.awt.*;
+import java .awt. event .*;
+
+/**
+ * 
+ * @author Bill Yu
+ *
+ * Class: MonthJFrame
+ * 
+ *  Extents JFrame, is used as a GUI which implements the Actionlistener and calls ActionPerformed when an event is detected
+ */
+public class MonthJFrame extends JFrame implements ActionListener{
+	
+	private JTextField inputField; 
+	private JTextArea display;
+
+	/**
+	 * Constructor method which initializes and sets variables for MonthJFrame
+	 * @param title 
+	 */
+	public MonthJFrame(String title)  {
+		buildGUI();
+		
+		setTitle(title);
+		setSize( 350, 150 );              
+		pack();
+		setVisible(true);
+	
+	}
+
+	/**
+	 * Sets up and configures the text and layout for the GUI window, including TextFields, inputfields and the ActionListener
+	 */
+	private void buildGUI() {
+		JLabel prompt = new JLabel("Input a month between 1 and 12 and press return:");
+	
+		inputField = new JTextField(10); 
+		inputField.setText("0");
+		inputField.addActionListener( this ); 
+		
+		display = new JTextArea (1 ,30);
+		
+		JPanel panel = new JPanel();
+		panel.setLayout(new GridLayout(0,2));
+		panel.add(prompt);
+		panel.add(inputField);
+		
+		Container contentPane = getContentPane();
+		contentPane.setLayout(new BorderLayout());
+		
+		contentPane.add("Center", panel);
+		contentPane.add("South", display);
+	}
+	
+	/**
+	 * @param ActionEvent is detected by the Actionlistener
+	 * Executes when ActionListener detects an event
+	 * Receives the number of of days from the input field then calls the 
+	 * howManyDays function, and prints out the number of days
+	 */
+	public void actionPerformed(ActionEvent evt)  { 
+		if ( evt.getSource() == inputField) { 
+			
+			int days;
+			int month;
+			
+			month = Integer.parseInt(inputField.getText());
+			days = Days.howManyDays(month);
+			
+			display.setText("There are " + days + " days in month " + month + ".");
+		}
+	}
+	
+	/**
+	 * Main fuction starts GUI
+	 * @param args user input from terminal
+	 */
+	public static void main(String[] args) {
+		
+		//Starting the GUI application
+		new MonthJFrame("Days in month");
+
+	}
+
+}

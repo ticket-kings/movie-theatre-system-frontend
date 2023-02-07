@@ -1,0 +1,11 @@
+
+public class QuizTest {
+	
+	if (b1 == true && b2 ==true) {
+	    System.out.println("granted");
+	}
+	else {
+	    System.out.println("denied");
+	}
+	
+}

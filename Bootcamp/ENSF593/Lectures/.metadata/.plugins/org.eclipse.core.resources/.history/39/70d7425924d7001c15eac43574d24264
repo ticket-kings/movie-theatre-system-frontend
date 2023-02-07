@@ -1,0 +1,39 @@
+/**
+ * Class representing command-line interface to compute 
+ * yearly and daily compounded certificate of deposit.
+ *  
+ * @author Bill Yu
+ *
+ */
+public class BankCDApp {
+	
+	private BankCD bank;
+	private KeyboardReader reader;
+	
+	public BankCDApp() {
+		
+		reader = new KeyboardReader();
+	}
+	
+	public void run() {
+		//TODO: add code here
+		reader.display("Compare daily and annual compounding for a Bank CD.\n");
+		reader.prompt("Input CD initial principal, e.g.  1000.55 > \n");
+		double p = reader.getKeyboardDouble();
+		reader.prompt("Input CD intertest rate, e.g.  6.5 > \n");
+		double r = reader.getKeyboardDouble();
+		reader.prompt("Input the number of years to maturity, e.g.  10.5 > \n");
+		double y = reader.getKeyboardDouble();
+		
+		reader.display("For Principal = $" + p + " Rate= " + r + "% Years= " + y);
+	}
+
+	public static void main(String[] args) {
+		
+		BankCDApp app = new BankCDApp();
+		app.run();
+		
+
+	}
+
+}
